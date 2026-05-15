@@ -1,0 +1,274 @@
+/* =========================================================
+   Mar de Histórias — estilos globais
+   Paleta, cabeçalho, rodapé, benefícios e componentes comuns
+   ========================================================= */
+
+:root{
+  --fundo:#fbf4ef;
+  --fundo-2:#fffaf6;
+  --texto:#211918;
+  --muted:#6f5a52;
+  --marrom:#8f5b50;
+  --marrom-2:#b27a6f;
+  --borda:#e5cfc6;
+  --sombra:0 18px 45px rgba(82,45,36,.13);
+  --radius:18px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  color:var(--texto);
+  background:linear-gradient(180deg,#fff7f2 0%,#fbf1eb 45%,#fffaf7 100%);
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+button{cursor:pointer}
+
+@keyframes rise{
+  from{opacity:0;transform:translateY(22px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes cartPulse{
+  0%{transform:scale(1)}
+  45%{transform:scale(1.16)}
+  100%{transform:scale(1)}
+}
+@keyframes toastIn{
+  from{opacity:0;transform:translateY(18px) scale(.98)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+/* Cabeçalho */
+.topbar{
+  height:86px;
+  padding:0 8%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+  background:rgba(255,248,244,.86);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(120,83,75,.13);
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+.logo{
+  min-width:230px;
+  line-height:.9;
+}
+.logo h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:37px;
+  font-weight:600;
+  letter-spacing:-1px;
+}
+.logo span{
+  display:block;
+  text-align:center;
+  font-size:12px;
+  letter-spacing:8px;
+  margin-top:6px;
+}
+.nav{
+  display:flex;
+  gap:30px;
+  align-items:center;
+  font-size:14px;
+  font-weight:600;
+  white-space:nowrap;
+}
+.nav a{transition:.25s ease}
+.nav a:hover{color:var(--marrom)}
+.search{
+  width:min(420px,28vw);
+  height:46px;
+  border:1px solid var(--borda);
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  background:rgba(255,255,255,.55);
+  padding:0 15px;
+  transition:.25s ease;
+}
+.search:focus-within{
+  border-color:#c79d92;
+  box-shadow:0 0 0 4px rgba(143,91,80,.08);
+}
+.search input{
+  border:0;
+  outline:0;
+  background:transparent;
+  width:100%;
+  font-size:13px;
+  color:var(--texto);
+}
+.actions{display:flex;gap:26px;align-items:center;font-size:14px;font-weight:600}
+.icon-link{display:flex;align-items:center;gap:8px;position:relative}
+.badge{
+  position:absolute;
+  top:-10px;
+  right:-12px;
+  min-width:16px;
+  height:16px;
+  padding:0 4px;
+  border-radius:999px;
+  background:var(--marrom);
+  color:white;
+  font-size:10px;
+  display:grid;
+  place-items:center;
+  transition:.25s ease;
+}
+.badge.pulse{animation:cartPulse .38s ease}
+.menu-btn{
+  display:none;
+  background:none;
+  border:0;
+  font-size:24px;
+  color:#4a3733;
+}
+
+/* Faixa de benefícios */
+.benefits{
+  margin:34px 0 22px;
+  border:1px solid var(--borda);
+  border-radius:10px;
+  padding:20px 48px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:34px;
+  background:rgba(255,255,255,.38);
+}
+.benefit{display:flex;align-items:center;gap:16px;color:#352723}
+.benefit i{font-size:28px;color:#b16e62}
+.benefit strong{display:block;font-size:15px;margin-bottom:4px}
+.benefit span{font-size:13px;color:var(--muted)}
+
+/* Rodapé */
+footer{
+  background:linear-gradient(135deg,#a9786f,#8d5b52);
+  color:white;
+  margin-top:0;
+}
+.footer-grid{
+  padding:28px 8% 24px;
+  display:grid;
+  grid-template-columns:2.1fr 1fr 1fr 1.1fr 1.35fr;
+  gap:52px;
+  align-items:start;
+}
+footer h4{
+  font-family:'Cormorant Garamond',serif;
+  font-size:21px;
+  margin-bottom:14px;
+  font-weight:600;
+}
+footer p, footer a{
+  font-size:14px;
+  color:rgba(255,255,255,.86);
+  line-height:2;
+}
+.newsletter{display:flex;margin-top:14px;max-width:360px}
+.newsletter input{
+  height:44px;
+  border:0;
+  padding:0 15px;
+  outline:0;
+  flex:1;
+  border-radius:5px 0 0 5px;
+}
+.newsletter button{
+  border:0;
+  background:#744940;
+  color:white;
+  padding:0 20px;
+  border-radius:0 5px 5px 0;
+}
+.socials{display:flex;gap:14px;margin-top:12px;font-size:22px}
+.footer-bottom{
+  padding:18px 8%;
+  background:rgba(67,39,35,.22);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  font-size:13px;
+  color:rgba(255,255,255,.88);
+}
+.payments{display:flex;align-items:center;gap:25px;font-weight:700;font-size:20px}
+
+/* Toasts de confirmação */
+.toast-container{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  z-index:100;
+  width:min(360px,calc(100vw - 32px));
+  display:grid;
+  gap:12px;
+}
+.toast{
+  background:rgba(255,250,247,.96);
+  border:1px solid var(--borda);
+  border-left:5px solid var(--marrom);
+  color:#4c3833;
+  border-radius:16px;
+  padding:15px 17px;
+  box-shadow:0 18px 38px rgba(67,39,35,.18);
+  animation:toastIn .28s ease both;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+.toast i{color:var(--marrom);margin-top:2px}
+.toast strong{display:block;font-size:14px;margin-bottom:4px}
+.toast p{font-size:13px;line-height:1.55;color:var(--muted)}
+
+/* Responsividade global */
+@media(max-width:1280px){
+  .topbar{padding:0 4%}
+  .nav{gap:18px}
+  .logo{min-width:200px}
+  .search{width:300px}
+}
+@media(max-width:940px){
+  .topbar{height:auto;padding:18px 5%;flex-wrap:wrap}
+  .menu-btn{display:block}
+  .nav{
+    order:5;
+    width:100%;
+    display:none;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  .topbar.active .nav{display:grid}
+  .search{width:100%;order:4}
+  .actions{margin-left:auto}
+  .benefits{grid-template-columns:1fr 1fr;padding:22px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+  .payments{flex-wrap:wrap}
+}
+@media(max-width:620px){
+  .logo h1{font-size:30px}
+  .logo span{font-size:10px;letter-spacing:6px}
+  .actions{font-size:0;gap:18px}
+  .actions i{font-size:18px}
+  .benefits{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:26px}
+  .footer-bottom{font-size:12px}
+  .payments{font-size:16px}
+  .toast-container{right:16px;bottom:16px}
+}
+
+
+.cart-link-active{
+  color:var(--marrom);
+}
+.cart-link-active i{
+  color:var(--marrom);
+}

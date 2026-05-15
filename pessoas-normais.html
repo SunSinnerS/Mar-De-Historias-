@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pessoas Normais | Mar de Histórias</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/livro.css">
+</head>
+<body>
+  
+<header class="topbar" id="topbar">
+  <a class="logo" href="index.html">
+    <h1>Mar de Histórias</h1>
+    <span>LIVRARIA</span>
+  </a>
+
+  <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <nav class="nav">
+    <a href="index.html">Início</a>
+    <a href="catalogo.html">Livros <i class="fa-solid fa-chevron-down"></i></a>
+    <a href="index.html#mais-comprados">Mais Vendidos</a>
+    <a href="catalogo.html">Lançamentos</a>
+    <a href="catalogo.html#filtros-catalogo">Categorias <i class="fa-solid fa-chevron-down"></i></a>
+    <a href="catalogo.html">Ofertas</a>
+  </nav>
+
+  <form class="search">
+    <input type="search" placeholder="Buscar por título, autor ou categoria...">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </form>
+
+  <div class="actions">
+    <a class="icon-link" href="#"><i class="fa-regular fa-user"></i> Entrar</a>
+    <a class="icon-link" href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i> Carrinho <span class="badge">0</span></a>
+  </div>
+</header>
+
+  <main class="page-shell">
+    <nav class="breadcrumb">
+      <a href="index.html">Início</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <a href="index.html#mais-comprados">Livros</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span>Pessoas Normais</span>
+    </nav>
+
+    <section class="product-panel">
+      <div class="cover-box">
+        <img class="detail-cover" src="assets/fotos/pessoas-normais.jpg" alt="Capa do livro Pessoas Normais">
+      </div>
+
+      <div class="product-info">
+        <span class="product-kicker"><i class="fa-solid fa-book-open"></i> Romance literário</span>
+        <h1>Pessoas Normais</h1>
+        <p class="author-line">por <strong>Sally Rooney</strong></p>
+
+        <div class="rating-row">
+          <span class="stars">★★★★★</span>
+          <span class="rating-pill"><strong>4,6</strong> / 5</span>
+          <span class="rating-pill">932 avaliações</span>
+        </div>
+
+        <div class="description">
+          <h2>Descrição</h2>
+          <p>Connell e Marianne atravessam a juventude em uma relação intensa, marcada por aproximações, silêncios e desencontros. O livro acompanha o amadurecimento dos dois com delicadeza e desconforto.</p>
+<p>A narrativa explora intimidade, classe social, autoestima e a dificuldade de comunicar sentimentos quando tudo parece estar em transformação.</p>
+          <div class="highlights"><span>Drama intimista</span><span>Personagens complexos</span><span>Escrita contemporânea</span></div>
+        </div>
+      </div>
+
+      <aside class="purchase-card">
+        <p class="stock"><i class="fa-solid fa-circle-check"></i> Em estoque</p>
+        <p class="price-label">Preço do livro</p>
+        <p class="main-price">R$ 49,90</p>
+        <p class="installments">ou em até 6x sem juros nas condições da loja</p>
+
+        <div class="buy-actions">
+          <div class="qty-control" aria-label="Selecionar quantidade">
+            <button class="qty-btn" type="button" data-qty-action="decrease" aria-label="Diminuir quantidade">−</button>
+            <span class="qty-value" data-qty-value>1</span>
+            <button class="qty-btn" type="button" data-qty-action="increase" aria-label="Aumentar quantidade">+</button>
+          </div>
+          <button class="buy-btn js-add-product" type="button"><i class="fa-solid fa-bag-shopping"></i> Adicionar ao carrinho</button>
+        </div>
+
+        <div class="newsletter-box">
+          <i class="fa-regular fa-envelope"></i>
+          <div>
+            <strong>Newsletter geral</strong>
+            <p>Este título não está em campanha da newsletter no momento, mas você pode receber novidades da livraria.</p>
+          </div>
+        </div>
+
+        <div class="freight">
+          <h3>Calcular frete</h3>
+          <p>Digite seu CEP para visualizar uma estimativa de valor e prazo de entrega.</p>
+          <div class="cep-row">
+            <input id="cep-pessoas-normais" data-cep type="text" inputmode="numeric" placeholder="00000-000" maxlength="9">
+            <button class="js-calculate-freight" type="button">Calcular</button>
+          </div>
+          <div id="frete-pessoas-normais" class="shipping-result"></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="details-strip">
+      <article class="detail-item"><i class="fa-solid fa-shield-heart"></i><div><strong>Compra segura</strong><span>Ambiente visual da livraria</span></div></article>
+      <article class="detail-item"><i class="fa-solid fa-box-open"></i><div><strong>Embalagem cuidadosa</strong><span>Proteção para envio</span></div></article>
+      <article class="detail-item"><i class="fa-solid fa-rotate-left"></i><div><strong>Trocas e devoluções</strong><span>Consulte a política da loja</span></div></article>
+      <article class="detail-item"><i class="fa-solid fa-bookmark"></i><div><strong>Favoritar título</strong><span>Salve para ver depois</span></div></article>
+    </section>
+
+    <section class="reviews-wrap">
+      <div class="reviews-head">
+        <div>
+          <h2>Avaliações dos leitores</h2>
+          <p class="reviews-summary">Comentários ilustrativos criados para a página de produto da livraria.</p>
+        </div>
+        <span class="rating-pill"><strong>4,6</strong> de média geral</span>
+      </div>
+      <div class="reviews-grid">
+      <article class="review-card">
+        <div class="review-top">
+          <strong>Lívia S.</strong>
+          <span class="review-stars">★★★★★</span>
+        </div>
+        <p>Achei a relação dos protagonistas muito real. O livro incomoda justamente por parecer tão humano.</p>
+      </article>
+
+      <article class="review-card">
+        <div class="review-top">
+          <strong>Renato P.</strong>
+          <span class="review-stars">★★★★☆</span>
+        </div>
+        <p>Gostei da escrita minimalista e dos conflitos emocionais, embora o ritmo seja mais calmo.</p>
+      </article>
+
+      <article class="review-card">
+        <div class="review-top">
+          <strong>Fernanda T.</strong>
+          <span class="review-stars">★★★☆☆</span>
+        </div>
+        <p>Reconheço a qualidade, mas não me conectei tanto com os personagens quanto esperava.</p>
+      </article></div>
+    </section>
+
+    
+<section class="benefits">
+  <div class="benefit"><i class="fa-solid fa-truck"></i><div><strong>Frete grátis</strong><span>Para todo o Brasil em pedidos selecionados</span></div></div>
+  <div class="benefit"><i class="fa-regular fa-credit-card"></i><div><strong>Até 6x sem juros</strong><span>Parcela mínima de R$50</span></div></div>
+  <div class="benefit"><i class="fa-solid fa-tag"></i><div><strong>Descontos exclusivos</strong><span>Para assinantes</span></div></div>
+  <div class="benefit"><i class="fa-regular fa-user"></i><div><strong>Atendimento humanizado</strong><span>Seg à Sex das 9h às 18h</span></div></div>
+</section>
+
+  </main>
+  
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h4>Receba novidades e descontos</h4>
+      <p>Cadastre-se e seja a primeira pessoa a saber sobre lançamentos e promoções.</p>
+      <form class="newsletter">
+        <input type="email" placeholder="Seu melhor e-mail">
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+    <div>
+      <h4>Institucional</h4>
+      <a href="#">Quem somos</a><br>
+      <a href="#">Nossa história</a><br>
+      <a href="#">Trabalhe conosco</a>
+    </div>
+    <div>
+      <h4>Ajuda</h4>
+      <a href="#">Central de ajuda</a><br>
+      <a href="#">Como comprar</a><br>
+      <a href="#">Formas de pagamento</a><br>
+      <a href="#">Prazo de entrega</a>
+    </div>
+    <div>
+      <h4>Políticas</h4>
+      <a href="#">Trocas e devoluções</a><br>
+      <a href="#">Política de privacidade</a><br>
+      <a href="#">Termos de uso</a>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <p><i class="fa-brands fa-whatsapp"></i> (11) 99999-9999</p>
+      <p><i class="fa-regular fa-envelope"></i> contato@mardehistorias.com.br</p>
+      <div class="socials">
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-tiktok"></i>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Mar de Histórias Livraria. Todos os direitos reservados.</span>
+    <div class="payments"><span>VISA</span><span>mastercard</span><span>elo</span><span>pix</span><span>Boleto</span></div>
+  </div>
+</footer>
+
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/livro.js"></script>
+</body>
+</html>

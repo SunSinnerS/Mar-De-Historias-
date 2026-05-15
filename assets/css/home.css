@@ -1,0 +1,175 @@
+/* =========================================================
+   Mar de Histórias — página inicial
+   Hero, vitrine de livros e cards
+   ========================================================= */
+
+.hero{
+  min-height:405px;
+  display:grid;
+  grid-template-columns:38% 62%;
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid rgba(120,83,75,.08);
+}
+.hero-img{
+  position:relative;
+  background:url('../fotos/livraria.webp') center/cover no-repeat;
+}
+.hero-img::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(0,0,0,.08),rgba(251,244,239,.96) 88%,#fbf4ef 100%);
+}
+.hero-content{
+  position:relative;
+  padding:78px 8% 55px 8%;
+  background:
+    radial-gradient(circle at 85% 22%,rgba(163,112,101,.12),transparent 24%),
+    linear-gradient(120deg,#fbf1eb 0%,#fff8f3 47%,#f5e8e1 100%);
+  isolation:isolate;
+}
+.hero-content::before{
+  content:"";
+  position:absolute;
+  right:-70px;
+  bottom:-120px;
+  width:900px;
+  height:330px;
+  background:radial-gradient(ellipse at center,rgba(167,129,116,.12),transparent 58%);
+  border-radius:50%;
+  transform:rotate(-12deg);
+  z-index:-1;
+}
+.hero h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:60px;
+  line-height:.92;
+  max-width:520px;
+  color:#6e4b43;
+  margin-bottom:24px;
+}
+.hero p{
+  color:#5e514d;
+  font-size:17px;
+  line-height:1.8;
+  max-width:510px;
+  margin-bottom:30px;
+}
+.btn{
+  border:0;
+  background:linear-gradient(135deg,var(--marrom-2),#95675f);
+  color:white;
+  padding:15px 34px;
+  border-radius:8px;
+  box-shadow:0 12px 24px rgba(125,79,70,.18);
+  transition:.28s ease;
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(125,79,70,.25)}
+.stamp{
+  position:absolute;
+  top:50px;
+  right:9%;
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  color:#9b746a;
+  opacity:.75;
+  border:1px dashed rgba(130,88,79,.35);
+  font-family:'Cormorant Garamond',serif;
+  text-align:center;
+  transform:rotate(-13deg);
+}
+.stamp i{font-size:42px;margin-bottom:6px;display:block}
+.stamp small{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase}
+
+main{padding:22px 7% 0}
+.section-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin:0 0 22px;
+}
+.section-head h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;
+  font-weight:600;
+}
+.see-all{font-size:14px;color:var(--marrom);font-weight:600}
+.books{
+  display:grid;
+  grid-template-columns:repeat(8,1fr);
+  gap:38px;
+}
+.book-link{
+  display:block;
+  color:inherit;
+  min-width:0;
+}
+.book-link.is-hidden{display:none}
+.book-card{
+  min-width:0;
+  animation:rise .7s ease both;
+}
+.book-link:nth-child(2) .book-card{animation-delay:.05s}
+.book-link:nth-child(3) .book-card{animation-delay:.1s}
+.book-link:nth-child(4) .book-card{animation-delay:.15s}
+.book-link:nth-child(5) .book-card{animation-delay:.2s}
+.book-link:nth-child(6) .book-card{animation-delay:.25s}
+.book-link:nth-child(7) .book-card{animation-delay:.3s}
+.book-link:nth-child(8) .book-card{animation-delay:.35s}
+.cover{
+  width:100%;
+  aspect-ratio:3/4.45;
+  border-radius:8px;
+  object-fit:cover;
+  box-shadow:var(--sombra);
+  transition:.3s ease;
+  background:#ddd;
+}
+.book-card:hover .cover{transform:translateY(-7px) scale(1.02)}
+.book-title{
+  margin-top:14px;
+  font-size:14px;
+  line-height:1.35;
+  font-weight:600;
+  min-height:38px;
+}
+.author{font-size:13px;color:var(--muted);margin-top:4px;min-height:20px}
+.price-row{margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.price{font-size:17px;font-weight:700}
+.cart-btn{
+  width:32px;
+  height:32px;
+  border:1px solid #c89589;
+  color:#b6776a;
+  border-radius:6px;
+  background:white;
+  display:grid;
+  place-items:center;
+  transition:.25s ease;
+  position:relative;
+  z-index:2;
+}
+.cart-btn:hover{background:#b6776a;color:#fff;transform:translateY(-2px)}
+
+@media(max-width:1280px){
+  .books{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:940px){
+  .hero{grid-template-columns:1fr}
+  .hero-img{min-height:230px}
+  .hero-img::after{background:linear-gradient(180deg,rgba(0,0,0,.1),#fbf4ef 100%)}
+  .hero-content{padding:45px 7%}
+  .hero h2{font-size:46px}
+  .stamp{display:none}
+  .books{gap:24px}
+}
+@media(max-width:620px){
+  main{padding:24px 5% 0}
+  .hero h2{font-size:40px}
+  .hero p{font-size:15px}
+  .books{grid-template-columns:repeat(2,1fr);gap:28px 18px}
+}
