@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mar de Histórias Livraria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+</head>
+<body>
+  <header class="topbar" id="topbar">
+    <a class="logo" href="index.html">
+      <h1>Mar de Histórias</h1>
+      <span>LIVRARIA</span>
+    </a>
+
+    <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <nav class="nav">
+      <a href="index.html">Início</a>
+      <a href="catalogo.html">Livros <i class="fa-solid fa-chevron-down"></i></a>
+      <a href="#mais-comprados">Mais Vendidos</a>
+      <a href="catalogo.html">Lançamentos</a>
+      <a href="catalogo.html#filtros-catalogo">Categorias <i class="fa-solid fa-chevron-down"></i></a>
+      <a href="catalogo.html">Ofertas</a>
+    </nav>
+
+    <form class="search">
+      <input type="search" placeholder="Buscar por título, autor ou categoria...">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </form>
+
+    <div class="actions">
+      <a class="icon-link" href="#"><i class="fa-regular fa-user"></i> Entrar</a>
+      <a class="icon-link" href="#"><i class="fa-solid fa-cart-shopping"></i> Carrinho <span class="badge">0</span></a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-img"></div>
+    <div class="hero-content">
+      <div class="stamp">
+        <div>
+          <i class="fa-solid fa-book-open"></i>
+          <small>Mar de Histórias<br>Livros que transformam</small>
+        </div>
+      </div>
+      <h2>Bem-vindo à<br>Mar de Histórias</h2>
+      <p>Descubra novos mundos, personagens inesquecíveis e histórias que ficam para sempre.</p>
+      <button class="btn js-scroll-books" type="button">Explorar livros</button>
+    </div>
+  </section>
+
+  <main>
+    <section id="mais-comprados">
+      <div class="section-head">
+        <h3>Mais Comprados</h3>
+        <a class="see-all" href="catalogo.html">Ver todos <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="books">
+        <a class="book-link" href="biblioteca-noite.html" aria-label="Abrir página do livro"><article class="book-card">
+          <img class="cover" src="assets/fotos/biblioteca-meia-noite.jpg" alt="A Biblioteca da Meia-Noite">
+          <h4 class="book-title">A BIBLIOTECA</h4>
+          <p class="author">Matt Haig</p>
+          <div class="price-row"><span class="price">R$ 59,90</span><button class="cart-btn"><i class="fa-solid fa-bag-shopping"></i></button></div>
+        </article></a>
+
+        <a class="book-link" href="pessoas-normais.html" aria-label="Abrir página do livro"><article class="book-card">
+          <img class="cover" src="assets/fotos/pessoas-normais.jpg" alt="Pessoas Normais">
+          <h4 class="book-title">Pessoas Normais</h4>
+          <p class="author">Sally Rooney</p>
+          <div class="price-row"><span class="price">R$ 49,90</span><button class="cart-btn"><i class="fa-solid fa-cart-plus"></i></button></div>
+        </article></a>
+
+        <a class="book-link" href="harry-potter.html" aria-label="Abrir página do livro"><article class="book-card">
+          <img class="cover" src="assets/fotos/harry-potter-pedra-filosofal.jpg" alt="Harry Potter e a Pedra Filosofal">
+          <h4 class="book-title">Harry Potter e a Pedra Filosofal</h4>
+          <p class="author">J.K. Rowling</p>
+          <div class="price-row"><span class="price">R$ 79,90</span><button class="cart-btn"><i class="fa-solid fa-bag-shopping"></i></button></div>
+        </article></a>
+
+        <a class="book-link" href="dois-morrem-final.html" aria-label="Abrir página do livro"><article class="book-card">
+          <img class="cover" src="assets/fotos/os-dois-morrem-no-final.jpg" alt="Os Dois Morrem no Final">
+          <h4 class="book-title">Os Dois Morrem no Final</h4>
+          <p class="author">Adam Silvera</p>
+          <div class="price-row"><span class="price">R$ 55,90</span><button class="cart-btn"><i class="fa-solid fa-cart-plus"></i></button></div>
+        </article></a>
+
+        <a class="book-link" href="o-alquimista.html" aria-label="Abrir página do livro"><article class="book-card">
+          <img class="cover" src="assets/fotos/o-alquimista.jpg" alt="O Alquimista">
+          <h4 class="book-title">O Alquimista</h4>
+          <p class="author">Paulo Coelho</p>
+          <div class="price-row"><span class="price">R$ 44,90</span><button class="cart-btn"><i class="fa-solid fa-bag-shopping"></i></button></div>
+        </article></a>
+
+        <a class="book-link" href="irmaos-karamazov.html" aria-label="Abrir página do livro"><article class="book-card">
+          <img class="cover" src="assets/fotos/irmaos-karamazov.jpg" alt="Os Irmãos Karamázov">
+          <h4 class="book-title">Os Irmãos Karamázov</h4>
+          <p class="author">Fiódor Dostoiévski</p>
+          <div class="price-row"><span class="price">R$ 129,90</span><button class="cart-btn"><i class="fa-solid fa-bag-shopping"></i></button></div>
+        </article></a>
+
+        <a class="book-link" href="lemon-trees.html" aria-label="Abrir página do livro"><article class="book-card">
+          <img class="cover" src="assets/fotos/lemon-trees-grow.jpg" alt="As Long As The Lemon Trees Grow">
+          <h4 class="book-title">As Long As The Lemon Trees Grow</h4>
+          <p class="author">Zoulfa Katouh</p>
+          <div class="price-row"><span class="price">R$ 69,90</span><button class="cart-btn"><i class="fa-solid fa-cart-plus"></i></button></div>
+        </article></a>
+
+        <a class="book-link" href="sand-whisperers-daughter.html" aria-label="Abrir página do livro"><article class="book-card">
+          <img class="cover" src="assets/fotos/stardust-thief.jpg" alt="Sand Whisperer's Daughter">
+          <h4 class="book-title">Sand Whisperer's Daughter</h4>
+          <p class="author">Ruizi Chén</p>
+          <div class="price-row"><span class="price">R$ 64,90</span><button class="cart-btn"><i class="fa-solid fa-bag-shopping"></i></button></div>
+        </article></a>
+      </div>
+    </section>
+
+    <section class="benefits">
+      <div class="benefit"><i class="fa-solid fa-truck"></i><div><strong>Frete grátis</strong><span>Para todo o Brasil</span></div></div>
+      <div class="benefit"><i class="fa-regular fa-credit-card"></i><div><strong>Até 6x sem juros</strong><span>Parcela mínima de R$50</span></div></div>
+      <div class="benefit"><i class="fa-solid fa-tag"></i><div><strong>Descontos exclusivos</strong><span>Para assinantes</span></div></div>
+      <div class="benefit"><i class="fa-regular fa-user"></i><div><strong>Atendimento humanizado</strong><span>Seg à Sex das 9h às 18h</span></div></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Receba novidades e descontos</h4>
+        <p>Cadastre-se e seja a primeira pessoa a saber sobre lançamentos e promoções.</p>
+        <form class="newsletter">
+          <input type="email" placeholder="Seu melhor e-mail">
+          <button type="submit">Cadastrar</button>
+        </form>
+      </div>
+      <div>
+        <h4>Institucional</h4>
+        <a href="#">Quem somos</a><br>
+        <a href="#">Nossa história</a><br>
+        <a href="#">Trabalhe conosco</a>
+      </div>
+      <div>
+        <h4>Ajuda</h4>
+        <a href="#">Central de ajuda</a><br>
+        <a href="#">Como comprar</a><br>
+        <a href="#">Formas de pagamento</a><br>
+        <a href="#">Prazo de entrega</a>
+      </div>
+      <div>
+        <h4>Políticas</h4>
+        <a href="#">Trocas e devoluções</a><br>
+        <a href="#">Política de privacidade</a><br>
+        <a href="#">Termos de uso</a>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <p><i class="fa-brands fa-whatsapp"></i> (11) 99999-9999</p>
+        <p><i class="fa-regular fa-envelope"></i> contato@mardehistorias.com.br</p>
+        <div class="socials">
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-tiktok"></i>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Mar de Histórias Livraria. Todos os direitos reservados.</span>
+      <div class="payments"><span>VISA</span><span>mastercard</span><span>elo</span><span>pix</span><span>Boleto</span></div>
+    </div>
+  </footer>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
