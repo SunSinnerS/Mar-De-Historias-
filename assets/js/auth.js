@@ -1,0 +1,381 @@
+/* =========================================================
+   Mar de Histórias — autenticação integrada à API
+   Login, cadastro e recuperação de senha
+   ========================================================= */
+
+(() => {
+  'use strict';
+
+  const SESSION_KEY = 'marDeHistoriasSessao';
+
+  const page = document.body?.dataset.page || '';
+  const statusBox = document.getElementById('authStatus');
+
+  const normalizeEmail = (value = '') => value.trim().toLowerCase();
+
+  const isValidEmail = (value = '') =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+
+  const apiRequest = async (url, options = {}) => {
+    const response = await fetch(url, {
+      credentials: 'same-origin',
+      ...options,
+      headers: {
+        'Content-Type': 'application/json',
+        ...(options.headers || {}),
+      },
+    });
+
+    const data = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+      throw new Error(data.message || 'Não foi possível concluir a ação.');
+    }
+
+    return data;
+  };
+
+  const getSession = () => {
+    try {
+      return (
+        JSON.parse(localStorage.getItem(SESSION_KEY)) ||
+        JSON.parse(sessionStorage.getItem(SESSION_KEY)) ||
+        null
+      );
+    } catch (error) {
+      return null;
+    }
+  };
+
+  const saveSession = (user, remember = true) => {
+    const session = {
+      publicId: user.publicId,
+      email: user.email,
+      name: user.nomeCompleto || [user.nome, user.sobrenome].filter(Boolean).join(' ') || user.nome || 'Leitor',
+      createdAt: new Date().toISOString(),
+    };
+
+    localStorage.removeItem(SESSION_KEY);
+    sessionStorage.removeItem(SESSION_KEY);
+
+    if (remember) {
+      localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+    } else {
+      sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
+    }
+
+    window.MarDeHistorias?.refreshAccountArea?.();
+  };
+
+  const showStatus = (message, type = 'error') => {
+    if (!statusBox) return;
+
+    statusBox.className = `auth-status is-visible is-${type}`;
+    statusBox.textContent = message;
+  };
+
+  const clearStatus = () => {
+    if (!statusBox) return;
+    statusBox.className = 'auth-status';
+    statusBox.textContent = '';
+  };
+
+  const toast = ({ title, message, icon }) => {
+    window.MarDeHistorias?.showToast?.({ title, message, icon });
+  };
+
+  const getRedirect = () => {
+    const params = new URLSearchParams(window.location.search);
+    const redirect = params.get('redirect');
+    return redirect && !redirect.includes('://') ? redirect : 'index.html';
+  };
+
+  const setButtonLoading = (button, isLoading, label) => {
+    if (!button) return;
+
+    if (isLoading) {
+      button.dataset.originalLabel = button.innerHTML;
+      button.disabled = true;
+      button.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> ${label}`;
+      return;
+    }
+
+    button.disabled = false;
+    button.innerHTML = button.dataset.originalLabel || button.innerHTML;
+  };
+
+  const initPasswordToggles = () => {
+    document.querySelectorAll('[data-toggle-password]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const input = document.getElementById(button.dataset.togglePassword);
+        const icon = button.querySelector('i');
+        if (!input) return;
+
+        const showing = input.type === 'text';
+        input.type = showing ? 'password' : 'text';
+        button.setAttribute('aria-label', showing ? 'Mostrar senha' : 'Ocultar senha');
+
+        if (icon) {
+          icon.className = showing ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash';
+        }
+      });
+    });
+  };
+
+  const initLogin = () => {
+    const form = document.getElementById('loginForm');
+    if (!form) return;
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      clearStatus();
+
+      const email = normalizeEmail(document.getElementById('loginEmail')?.value || '');
+      const senha = document.getElementById('loginPassword')?.value || '';
+      const lembrar = Boolean(document.getElementById('rememberSession')?.checked);
+      const submit = form.querySelector('[type="submit"]');
+
+      if (!isValidEmail(email)) {
+        showStatus('Digite um e-mail válido para entrar.');
+        document.getElementById('loginEmail')?.focus();
+        return;
+      }
+
+      if (!senha) {
+        showStatus('Digite sua senha para continuar.');
+        document.getElementById('loginPassword')?.focus();
+        return;
+      }
+
+      setButtonLoading(submit, true, 'Entrando...');
+
+      try {
+        const data = await apiRequest('/api/auth/login', {
+          method: 'POST',
+          body: JSON.stringify({ email, senha, lembrar }),
+        });
+
+        saveSession(data.usuario, lembrar);
+        showStatus(`Entrada confirmada. Bem-vindo, ${(data.usuario.nome || 'Leitor').split(' ')[0]}!`, 'success');
+        toast({
+          title: 'Login realizado',
+          message: `Olá, ${(data.usuario.nome || 'Leitor').split(' ')[0]}. Sua conta está ativa.`,
+          icon: 'fa-solid fa-circle-check',
+        });
+
+        window.setTimeout(() => {
+          window.location.href = getRedirect();
+        }, 750);
+      } catch (error) {
+        showStatus(error.message);
+        toast({
+          title: 'Não foi possível entrar',
+          message: error.message,
+          icon: 'fa-solid fa-triangle-exclamation',
+        });
+      } finally {
+        setButtonLoading(submit, false);
+      }
+    });
+  };
+
+  const initRegister = () => {
+    const form = document.getElementById('registerForm');
+    if (!form) return;
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      clearStatus();
+
+      const nome = document.getElementById('registerName')?.value.trim() || '';
+      const sobrenome = document.getElementById('registerLastName')?.value.trim() || '';
+      const email = normalizeEmail(document.getElementById('registerEmail')?.value || '');
+      const senha = document.getElementById('registerPassword')?.value || '';
+      const confirmarSenha = document.getElementById('registerConfirmPassword')?.value || '';
+      const aceiteTermos = Boolean(document.getElementById('acceptTerms')?.checked);
+      const newsletter = Boolean(document.getElementById('subscribeNewsletter')?.checked);
+      const submit = form.querySelector('[type="submit"]');
+
+      if (nome.length < 2) {
+        showStatus('Informe um nome válido para criar a conta.');
+        document.getElementById('registerName')?.focus();
+        return;
+      }
+
+      if (!isValidEmail(email)) {
+        showStatus('Digite um e-mail válido para o cadastro.');
+        document.getElementById('registerEmail')?.focus();
+        return;
+      }
+
+      if (senha.length < 8) {
+        showStatus('A senha precisa ter pelo menos 8 caracteres.');
+        document.getElementById('registerPassword')?.focus();
+        return;
+      }
+
+      if (senha !== confirmarSenha) {
+        showStatus('As senhas não coincidem. Revise a confirmação.');
+        document.getElementById('registerConfirmPassword')?.focus();
+        return;
+      }
+
+      if (!aceiteTermos) {
+        showStatus('Aceite os termos para continuar.');
+        document.getElementById('acceptTerms')?.focus();
+        return;
+      }
+
+      setButtonLoading(submit, true, 'Criando conta...');
+
+      try {
+        const data = await apiRequest('/api/auth/cadastro', {
+          method: 'POST',
+          body: JSON.stringify({
+            nome,
+            sobrenome,
+            email,
+            senha,
+            aceiteTermos,
+            newsletter,
+            lembrar: true,
+          }),
+        });
+
+        saveSession(data.usuario, true);
+
+        showStatus(`Conta criada com sucesso. Bem-vindo, ${nome}!`, 'success');
+        toast({
+          title: 'Cadastro concluído',
+          message: 'Sua conta da Mar de Histórias foi criada no banco.',
+          icon: 'fa-solid fa-user-check',
+        });
+
+        window.setTimeout(() => {
+          window.location.href = getRedirect();
+        }, 850);
+      } catch (error) {
+        showStatus(error.message);
+        toast({
+          title: 'Cadastro não concluído',
+          message: error.message,
+          icon: 'fa-solid fa-triangle-exclamation',
+        });
+      } finally {
+        setButtonLoading(submit, false);
+      }
+    });
+  };
+
+  const initRecovery = () => {
+    const emailForm = document.getElementById('recoveryEmailForm');
+    const passwordForm = document.getElementById('recoveryPasswordForm');
+    const emailLabel = document.getElementById('recoveryEmailLabel');
+
+    if (!emailForm || !passwordForm) return;
+
+    let recoveryToken = '';
+
+    emailForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      clearStatus();
+
+      const email = normalizeEmail(document.getElementById('recoveryEmail')?.value || '');
+      const submit = emailForm.querySelector('[type="submit"]');
+
+      if (!isValidEmail(email)) {
+        showStatus('Digite um e-mail válido para iniciar a recuperação.');
+        document.getElementById('recoveryEmail')?.focus();
+        return;
+      }
+
+      setButtonLoading(submit, true, 'Verificando...');
+
+      try {
+        const data = await apiRequest('/api/auth/recuperacao/iniciar', {
+          method: 'POST',
+          body: JSON.stringify({ email }),
+        });
+
+        recoveryToken = data.tokenLocal || '';
+
+        if (recoveryToken) {
+          emailForm.hidden = true;
+          passwordForm.hidden = false;
+          if (emailLabel) emailLabel.textContent = email;
+          showStatus('Modo local ativo: defina a nova senha para concluir.', 'success');
+        } else {
+          showStatus(data.message, 'success');
+        }
+      } catch (error) {
+        showStatus(error.message);
+      } finally {
+        setButtonLoading(submit, false);
+      }
+    });
+
+    passwordForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      clearStatus();
+
+      const novaSenha = document.getElementById('recoveryPassword')?.value || '';
+      const confirmarSenha = document.getElementById('recoveryConfirmPassword')?.value || '';
+      const submit = passwordForm.querySelector('[type="submit"]');
+
+      if (!recoveryToken) {
+        showStatus('Reinicie a recuperação para gerar um token válido.');
+        return;
+      }
+
+      if (novaSenha.length < 8) {
+        showStatus('A nova senha precisa ter pelo menos 8 caracteres.');
+        document.getElementById('recoveryPassword')?.focus();
+        return;
+      }
+
+      if (novaSenha !== confirmarSenha) {
+        showStatus('As senhas não coincidem. Revise a confirmação.');
+        document.getElementById('recoveryConfirmPassword')?.focus();
+        return;
+      }
+
+      setButtonLoading(submit, true, 'Salvando...');
+
+      try {
+        await apiRequest('/api/auth/recuperacao/redefinir', {
+          method: 'POST',
+          body: JSON.stringify({
+            token: recoveryToken,
+            novaSenha,
+          }),
+        });
+
+        localStorage.removeItem(SESSION_KEY);
+        sessionStorage.removeItem(SESSION_KEY);
+
+        showStatus('Senha atualizada com sucesso. Redirecionando para o login...', 'success');
+        toast({
+          title: 'Senha redefinida',
+          message: 'Entre novamente usando a nova senha.',
+          icon: 'fa-solid fa-key',
+        });
+
+        window.setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 1000);
+      } catch (error) {
+        showStatus(error.message);
+      } finally {
+        setButtonLoading(submit, false);
+      }
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initPasswordToggles();
+
+    if (page === 'login') initLogin();
+    if (page === 'cadastro') initRegister();
+    if (page === 'recuperar-senha') initRecovery();
+  });
+})();

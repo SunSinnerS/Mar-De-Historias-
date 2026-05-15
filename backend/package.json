@@ -1,0 +1,24 @@
+{
+  "name": "mar-de-historias-api",
+  "version": "1.0.0",
+  "description": "API segura para o site Mar de Histórias conectada ao MySQL LMH.",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "check": "node --check server.js && node --check src/routes/auth.routes.js && node --check src/routes/catalog.routes.js && node --check src/routes/forms.routes.js && node --check src/routes/checkout.routes.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.5.2",
+    "helmet": "^8.1.0",
+    "mysql2": "^3.22.3"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

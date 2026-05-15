@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/ofertas.css">
+  <title>Ofertas | Mar de Histórias</title>
+</head>
+<body data-page="ofertas">
+
+  <header class="topbar" id="topbar">
+    <a class="logo" href="index.html">
+      <h1>Mar de Histórias</h1>
+      <span>LIVRARIA</span>
+    </a>
+
+    <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <nav class="nav">
+      <a href="index.html">Início</a>
+      <a href="catalogo.html">Livros <i class="fa-solid fa-chevron-down"></i></a>
+      <a href="index.html#mais-comprados">Mais Vendidos</a>
+      <a href="catalogo.html">Lançamentos</a>
+      <a href="categorias.html">Categorias <i class="fa-solid fa-chevron-down"></i></a>
+      <a class="nav-offers-active" href="ofertas.html" aria-current="page">Ofertas</a>
+    </nav>
+
+    <form class="search">
+      <input type="search" placeholder="Buscar por título, autor ou categoria...">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </form>
+
+    <div class="actions">
+      <a class="icon-link account-link" href="login.html"><i class="fa-regular fa-user"></i> <span data-account-label>Entrar</span></a>
+      <a class="icon-link favorite-header-link" href="favoritos.html"><i class="fa-regular fa-heart"></i> Favoritos <span class="favorite-badge">0</span></a>
+      <a class="icon-link" href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i> Carrinho <span class="badge">0</span></a>
+    </div>
+  </header>
+
+  <main class="offers-page">
+    <nav class="breadcrumb offers-breadcrumb">
+      <a href="index.html">Início</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span>Ofertas</span>
+    </nav>
+
+    <section class="offers-hero">
+      <div class="offers-hero-copy">
+        <p class="offers-eyebrow">Semana do leitor</p>
+        <h1>Ofertas especiais</h1>
+        <p>Descontos ilustrativos para deixar a livraria mais completa, com filtros, carrinho e favoritos funcionando.</p>
+
+        <div class="coupon-box">
+          <div>
+            <span>Cupom visual</span>
+            <strong id="offerCouponCode">MARDEHISTORIAS10</strong>
+          </div>
+          <button id="copyOfferCoupon" type="button">
+            <i class="fa-regular fa-copy"></i>
+            Copiar cupom
+          </button>
+        </div>
+      </div>
+
+      <aside class="offers-countdown-card">
+        <p>Promoção termina em</p>
+        <div class="offers-countdown" id="offersCountdown">
+          <article><strong id="countDays">00</strong><span>Dias</span></article>
+          <article><strong id="countHours">00</strong><span>Horas</span></article>
+          <article><strong id="countMinutes">00</strong><span>Min.</span></article>
+          <article><strong id="countSeconds">00</strong><span>Seg.</span></article>
+        </div>
+        <small>Contagem visual salva neste navegador.</small>
+      </aside>
+    </section>
+
+    <section class="offers-stats">
+      <article>
+        <i class="fa-solid fa-tag"></i>
+        <div>
+          <strong>Até 25% OFF</strong>
+          <span>Maior desconto da seleção</span>
+        </div>
+      </article>
+      <article>
+        <i class="fa-solid fa-wallet"></i>
+        <div>
+          <strong>R$ 90,64</strong>
+          <span>Economia comprando 1 de cada</span>
+        </div>
+      </article>
+      <article>
+        <i class="fa-solid fa-book-open"></i>
+        <div>
+          <strong>8 títulos</strong>
+          <span>Ofertas prontas para explorar</span>
+        </div>
+      </article>
+    </section>
+
+    <section class="offers-layout">
+      <aside class="offers-filter-panel">
+        <div class="offers-filter-head">
+          <p class="panel-kicker">Filtrar</p>
+          <h2>Faixa de desconto</h2>
+        </div>
+
+        <div class="discount-filter-buttons" id="discountFilters">
+          <button class="discount-filter is-active" type="button" data-offer-filter="all">Todas</button>
+          <button class="discount-filter" type="button" data-offer-filter="low">Até 15%</button>
+          <button class="discount-filter" type="button" data-offer-filter="mid">16% a 20%</button>
+          <button class="discount-filter" type="button" data-offer-filter="high">Acima de 20%</button>
+        </div>
+
+        <label class="offers-sort-field">
+          <span>Ordenar</span>
+          <select id="offersSort">
+            <option value="discount-desc">Maior desconto</option>
+            <option value="price-asc">Menor preço promocional</option>
+            <option value="price-desc">Maior preço promocional</option>
+            <option value="title-asc">Título A–Z</option>
+          </select>
+        </label>
+
+        <div class="offers-tip">
+          <i class="fa-solid fa-circle-info"></i>
+          <p>Os botões de carrinho e favoritos funcionam diretamente nos cards promocionais.</p>
+        </div>
+      </aside>
+
+      <section class="offers-content" aria-live="polite">
+        <div class="offers-toolbar">
+          <div>
+            <p class="toolbar-label">Resultados</p>
+            <strong id="offersResultCount">8 ofertas encontradas</strong>
+          </div>
+          <a href="catalogo.html" class="offers-catalog-link">
+            Ver catálogo completo
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="offers-grid" id="offersGrid">
+          <a class="offer-book-link book-link"
+        href="biblioteca-noite.html"
+        data-title="A Biblioteca da Meia-Noite"
+        data-author="Matt Haig"
+        data-category="Ficção contemporânea"
+        data-price="49.12"
+        data-promo="49.12"
+        data-original="59.90"
+        data-discount="18">
+        <article class="offer-card book-card">
+          <div class="offer-cover-wrap">
+            <span class="offer-discount-badge">-18%</span>
+            <span class="offer-tag">Escolha da semana</span>
+            <button class="favorite-btn js-favorite-card" type="button" aria-label="Adicionar A Biblioteca da Meia-Noite aos favoritos" aria-pressed="false"><i class="fa-regular fa-heart"></i></button>
+            <img class="offer-cover cover" src="assets/fotos/biblioteca-meia-noite.jpg" alt="A Biblioteca da Meia-Noite">
+          </div>
+          <p class="offer-category">Ficção contemporânea</p>
+          <h3 class="book-title">A Biblioteca da Meia-Noite</h3>
+          <p class="author">Matt Haig</p>
+          <div class="offer-pricing">
+            <span class="old-price">R$ 59,90</span>
+            <strong class="price">R$ 49,12</strong>
+          </div>
+          <div class="price-row offer-actions-row">
+            <span class="offer-saving">Economize R$ 10,78</span>
+            <button class="cart-btn" type="button" aria-label="Adicionar A Biblioteca da Meia-Noite ao carrinho">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </button>
+          </div>
+        </article>
+      </a>
+      <a class="offer-book-link book-link"
+        href="pessoas-normais.html"
+        data-title="Pessoas Normais"
+        data-author="Sally Rooney"
+        data-category="Romance literário"
+        data-price="42.41"
+        data-promo="42.41"
+        data-original="49.90"
+        data-discount="15">
+        <article class="offer-card book-card">
+          <div class="offer-cover-wrap">
+            <span class="offer-discount-badge">-15%</span>
+            <span class="offer-tag">Romance em oferta</span>
+            <button class="favorite-btn js-favorite-card" type="button" aria-label="Adicionar Pessoas Normais aos favoritos" aria-pressed="false"><i class="fa-regular fa-heart"></i></button>
+            <img class="offer-cover cover" src="assets/fotos/pessoas-normais.jpg" alt="Pessoas Normais">
+          </div>
+          <p class="offer-category">Romance literário</p>
+          <h3 class="book-title">Pessoas Normais</h3>
+          <p class="author">Sally Rooney</p>
+          <div class="offer-pricing">
+            <span class="old-price">R$ 49,90</span>
+            <strong class="price">R$ 42,41</strong>
+          </div>
+          <div class="price-row offer-actions-row">
+            <span class="offer-saving">Economize R$ 7,49</span>
+            <button class="cart-btn" type="button" aria-label="Adicionar Pessoas Normais ao carrinho">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </button>
+          </div>
+        </article>
+      </a>
+      <a class="offer-book-link book-link"
+        href="harry-potter.html"
+        data-title="Harry Potter e a Pedra Filosofal"
+        data-author="J.K. Rowling"
+        data-category="Fantasia"
+        data-price="63.92"
+        data-promo="63.92"
+        data-original="79.90"
+        data-discount="20">
+        <article class="offer-card book-card">
+          <div class="offer-cover-wrap">
+            <span class="offer-discount-badge">-20%</span>
+            <span class="offer-tag">Fantasia favorita</span>
+            <button class="favorite-btn js-favorite-card" type="button" aria-label="Adicionar Harry Potter e a Pedra Filosofal aos favoritos" aria-pressed="false"><i class="fa-regular fa-heart"></i></button>
+            <img class="offer-cover cover" src="assets/fotos/harry-potter-pedra-filosofal.jpg" alt="Harry Potter e a Pedra Filosofal">
+          </div>
+          <p class="offer-category">Fantasia</p>
+          <h3 class="book-title">Harry Potter e a Pedra Filosofal</h3>
+          <p class="author">J.K. Rowling</p>
+          <div class="offer-pricing">
+            <span class="old-price">R$ 79,90</span>
+            <strong class="price">R$ 63,92</strong>
+          </div>
+          <div class="price-row offer-actions-row">
+            <span class="offer-saving">Economize R$ 15,98</span>
+            <button class="cart-btn" type="button" aria-label="Adicionar Harry Potter e a Pedra Filosofal ao carrinho">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </button>
+          </div>
+        </article>
+      </a>
+      <a class="offer-book-link book-link"
+        href="dois-morrem-final.html"
+        data-title="Os Dois Morrem no Final"
+        data-author="Adam Silvera"
+        data-category="Jovem adulto"
+        data-price="49.19"
+        data-promo="49.19"
+        data-original="55.90"
+        data-discount="12">
+        <article class="offer-card book-card">
+          <div class="offer-cover-wrap">
+            <span class="offer-discount-badge">-12%</span>
+            <span class="offer-tag">Leitura intensa</span>
+            <button class="favorite-btn js-favorite-card" type="button" aria-label="Adicionar Os Dois Morrem no Final aos favoritos" aria-pressed="false"><i class="fa-regular fa-heart"></i></button>
+            <img class="offer-cover cover" src="assets/fotos/os-dois-morrem-no-final.jpg" alt="Os Dois Morrem no Final">
+          </div>
+          <p class="offer-category">Jovem adulto</p>
+          <h3 class="book-title">Os Dois Morrem no Final</h3>
+          <p class="author">Adam Silvera</p>
+          <div class="offer-pricing">
+            <span class="old-price">R$ 55,90</span>
+            <strong class="price">R$ 49,19</strong>
+          </div>
+          <div class="price-row offer-actions-row">
+            <span class="offer-saving">Economize R$ 6,71</span>
+            <button class="cart-btn" type="button" aria-label="Adicionar Os Dois Morrem no Final ao carrinho">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </button>
+          </div>
+        </article>
+      </a>
+      <a class="offer-book-link book-link"
+        href="o-alquimista.html"
+        data-title="O Alquimista"
+        data-author="Paulo Coelho"
+        data-category="Ficção inspiracional"
+        data-price="33.67"
+        data-promo="33.67"
+        data-original="44.90"
+        data-discount="25">
+        <article class="offer-card book-card">
+          <div class="offer-cover-wrap">
+            <span class="offer-discount-badge">-25%</span>
+            <span class="offer-tag">Maior desconto</span>
+            <button class="favorite-btn js-favorite-card" type="button" aria-label="Adicionar O Alquimista aos favoritos" aria-pressed="false"><i class="fa-regular fa-heart"></i></button>
+            <img class="offer-cover cover" src="assets/fotos/o-alquimista.jpg" alt="O Alquimista">
+          </div>
+          <p class="offer-category">Ficção inspiracional</p>
+          <h3 class="book-title">O Alquimista</h3>
+          <p class="author">Paulo Coelho</p>
+          <div class="offer-pricing">
+            <span class="old-price">R$ 44,90</span>
+            <strong class="price">R$ 33,67</strong>
+          </div>
+          <div class="price-row offer-actions-row">
+            <span class="offer-saving">Economize R$ 11,23</span>
+            <button class="cart-btn" type="button" aria-label="Adicionar O Alquimista ao carrinho">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </button>
+          </div>
+        </article>
+      </a>
+      <a class="offer-book-link book-link"
+        href="irmaos-karamazov.html"
+        data-title="Os Irmãos Karamázov"
+        data-author="Fiódor Dostoiévski"
+        data-category="Clássicos"
+        data-price="116.91"
+        data-promo="116.91"
+        data-original="129.90"
+        data-discount="10">
+        <article class="offer-card book-card">
+          <div class="offer-cover-wrap">
+            <span class="offer-discount-badge">-10%</span>
+            <span class="offer-tag">Clássico especial</span>
+            <button class="favorite-btn js-favorite-card" type="button" aria-label="Adicionar Os Irmãos Karamázov aos favoritos" aria-pressed="false"><i class="fa-regular fa-heart"></i></button>
+            <img class="offer-cover cover" src="assets/fotos/irmaos-karamazov.jpg" alt="Os Irmãos Karamázov">
+          </div>
+          <p class="offer-category">Clássicos</p>
+          <h3 class="book-title">Os Irmãos Karamázov</h3>
+          <p class="author">Fiódor Dostoiévski</p>
+          <div class="offer-pricing">
+            <span class="old-price">R$ 129,90</span>
+            <strong class="price">R$ 116,91</strong>
+          </div>
+          <div class="price-row offer-actions-row">
+            <span class="offer-saving">Economize R$ 12,99</span>
+            <button class="cart-btn" type="button" aria-label="Adicionar Os Irmãos Karamázov ao carrinho">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </button>
+          </div>
+        </article>
+      </a>
+      <a class="offer-book-link book-link"
+        href="lemon-trees.html"
+        data-title="As Long As The Lemon Trees Grow"
+        data-author="Zoulfa Katouh"
+        data-category="Ficção histórica"
+        data-price="58.72"
+        data-promo="58.72"
+        data-original="69.90"
+        data-discount="16">
+        <article class="offer-card book-card">
+          <div class="offer-cover-wrap">
+            <span class="offer-discount-badge">-16%</span>
+            <span class="offer-tag">Sensível e marcante</span>
+            <button class="favorite-btn js-favorite-card" type="button" aria-label="Adicionar As Long As The Lemon Trees Grow aos favoritos" aria-pressed="false"><i class="fa-regular fa-heart"></i></button>
+            <img class="offer-cover cover" src="assets/fotos/lemon-trees-grow.jpg" alt="As Long As The Lemon Trees Grow">
+          </div>
+          <p class="offer-category">Ficção histórica</p>
+          <h3 class="book-title">As Long As The Lemon Trees Grow</h3>
+          <p class="author">Zoulfa Katouh</p>
+          <div class="offer-pricing">
+            <span class="old-price">R$ 69,90</span>
+            <strong class="price">R$ 58,72</strong>
+          </div>
+          <div class="price-row offer-actions-row">
+            <span class="offer-saving">Economize R$ 11,18</span>
+            <button class="cart-btn" type="button" aria-label="Adicionar As Long As The Lemon Trees Grow ao carrinho">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </button>
+          </div>
+        </article>
+      </a>
+      <a class="offer-book-link book-link"
+        href="sand-whisperers-daughter.html"
+        data-title="Sand Whisperer&#x27;s Daughter"
+        data-author="Ruizi Chén"
+        data-category="Fantasia"
+        data-price="50.62"
+        data-promo="50.62"
+        data-original="64.90"
+        data-discount="22">
+        <article class="offer-card book-card">
+          <div class="offer-cover-wrap">
+            <span class="offer-discount-badge">-22%</span>
+            <span class="offer-tag">Aventura com desconto</span>
+            <button class="favorite-btn js-favorite-card" type="button" aria-label="Adicionar Sand Whisperer&#x27;s Daughter aos favoritos" aria-pressed="false"><i class="fa-regular fa-heart"></i></button>
+            <img class="offer-cover cover" src="assets/fotos/stardust-thief.jpg" alt="Sand Whisperer&#x27;s Daughter">
+          </div>
+          <p class="offer-category">Fantasia</p>
+          <h3 class="book-title">Sand Whisperer&#x27;s Daughter</h3>
+          <p class="author">Ruizi Chén</p>
+          <div class="offer-pricing">
+            <span class="old-price">R$ 64,90</span>
+            <strong class="price">R$ 50,62</strong>
+          </div>
+          <div class="price-row offer-actions-row">
+            <span class="offer-saving">Economize R$ 14,28</span>
+            <button class="cart-btn" type="button" aria-label="Adicionar Sand Whisperer&#x27;s Daughter ao carrinho">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </button>
+          </div>
+        </article>
+      </a>
+        </div>
+
+        <div class="offers-empty" id="offersEmpty" hidden>
+          <i class="fa-regular fa-face-frown-open"></i>
+          <h3>Nenhuma oferta nessa faixa</h3>
+          <p>Escolha outro filtro de desconto para continuar explorando.</p>
+        </div>
+      </section>
+    </section>
+
+    <section class="offer-benefits">
+      <article>
+        <i class="fa-solid fa-bag-shopping"></i>
+        <div>
+          <strong>Compra integrada</strong>
+          <span>Adicione ofertas ao carrinho sem sair da página.</span>
+        </div>
+      </article>
+      <article>
+        <i class="fa-solid fa-heart"></i>
+        <div>
+          <strong>Favoritos promocionais</strong>
+          <span>Guarde títulos e compare depois.</span>
+        </div>
+      </article>
+      <article>
+        <i class="fa-solid fa-truck-fast"></i>
+        <div>
+          <strong>Fluxo completo</strong>
+          <span>O checkout continua funcionando com os itens ofertados.</span>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Receba novidades e descontos</h4>
+        <p>Cadastre-se e seja a primeira pessoa a saber sobre lançamentos e promoções.</p>
+        <form class="newsletter">
+          <input type="email" placeholder="Seu melhor e-mail">
+          <button type="submit">Cadastrar</button>
+        </form>
+      </div>
+      <div>
+        <h4>Institucional</h4>
+        <a href="quem-somos.html">Quem somos</a><br>
+        <a href="quem-somos.html#historia">Nossa história</a><br>
+        <a href="contato.html#trabalhe-conosco">Trabalhe conosco</a>
+      </div>
+      <div>
+        <h4>Ajuda</h4>
+        <a href="contato.html#central-ajuda">Central de ajuda</a><br>
+        <a href="contato.html#como-comprar">Como comprar</a><br>
+        <a href="contato.html#formas-pagamento">Formas de pagamento</a><br>
+        <a href="contato.html#prazo-entrega">Prazo de entrega</a>
+      </div>
+      <div>
+        <h4>Políticas</h4>
+        <a href="trocas-devolucoes.html">Trocas e devoluções</a><br>
+        <a href="politica-privacidade.html">Política de privacidade</a><br>
+        <a href="termos-de-uso.html">Termos de uso</a>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <p><i class="fa-brands fa-whatsapp"></i> (11) 99999-9999</p>
+        <p><i class="fa-regular fa-envelope"></i> contato@mardehistorias.com.br</p>
+        <div class="socials">
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-tiktok"></i>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Mar de Histórias Livraria. Todos os direitos reservados.</span>
+      <div class="payments"><span>VISA</span><span>mastercard</span><span>elo</span><span>pix</span><span>Boleto</span></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/ofertas.js"></script>
+</body>
+</html>
