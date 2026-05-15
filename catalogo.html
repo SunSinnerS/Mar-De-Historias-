@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo de Livros | Mar de Histórias</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/catalogo.css">
+</head>
+<body data-page="catalogo">
+
+  <header class="topbar" id="topbar">
+    <a class="logo" href="index.html">
+      <h1>Mar de Histórias</h1>
+      <span>LIVRARIA</span>
+    </a>
+
+    <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <nav class="nav">
+      <a href="index.html">Início</a>
+      <a href="catalogo.html" aria-current="page">Livros <i class="fa-solid fa-chevron-down"></i></a>
+      <a href="index.html#mais-comprados">Mais Vendidos</a>
+      <a href="catalogo.html">Lançamentos</a>
+      <a href="#filtros-catalogo">Categorias <i class="fa-solid fa-chevron-down"></i></a>
+      <a href="catalogo.html">Ofertas</a>
+    </nav>
+
+    <form class="search">
+      <input type="search" placeholder="Buscar por título, autor ou categoria...">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </form>
+
+    <div class="actions">
+      <a class="icon-link account-link" href="login.html"><i class="fa-regular fa-user"></i> <span data-account-label>Entrar</span></a>
+      <a class="icon-link favorite-header-link" href="favoritos.html"><i class="fa-regular fa-heart"></i> Favoritos <span class="favorite-badge">0</span></a>
+      <a class="icon-link" href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i> Carrinho <span class="badge">0</span></a>
+    </div>
+  </header>
+
+  <main class="catalog-page">
+    <section class="catalog-hero">
+      <div>
+        <p class="catalog-eyebrow">Acervo da livraria</p>
+        <h1>Catálogo completo</h1>
+        <p>Explore os títulos da Mar de Histórias, filtre por gênero, autor e faixa de preço e encontre sua próxima leitura.</p>
+      </div>
+      <div class="catalog-stats" aria-label="Resumo do catálogo">
+        <article><strong>8</strong><span>livros em destaque</span></article>
+        <article><strong>7</strong><span>categorias</span></article>
+        <article><strong>100%</strong><span>visual refinado</span></article>
+      </div>
+    </section>
+
+    <section class="catalog-layout">
+      <aside class="catalog-filters" id="filtros-catalogo">
+        <div class="filters-title">
+          <h2>Filtrar catálogo</h2>
+          <button class="clear-filters" id="clearFilters" type="button">Limpar</button>
+        </div>
+
+        <label class="filter-field">
+          <span>Categoria</span>
+          <select id="categoryFilter">
+            <option value="">Todas</option>
+            <option value="Clássicos">Clássicos</option>
+<option value="Fantasia">Fantasia</option>
+<option value="Ficção contemporânea">Ficção contemporânea</option>
+<option value="Ficção histórica">Ficção histórica</option>
+<option value="Ficção inspiracional">Ficção inspiracional</option>
+<option value="Jovem adulto">Jovem adulto</option>
+<option value="Romance literário">Romance literário</option>
+          </select>
+        </label>
+
+        <label class="filter-field">
+          <span>Autor</span>
+          <select id="authorFilter">
+            <option value="">Todos</option>
+            <option value="Adam Silvera">Adam Silvera</option>
+<option value="Fiódor Dostoiévski">Fiódor Dostoiévski</option>
+<option value="J.K. Rowling">J.K. Rowling</option>
+<option value="Matt Haig">Matt Haig</option>
+<option value="Paulo Coelho">Paulo Coelho</option>
+<option value="Ruizi Chén">Ruizi Chén</option>
+<option value="Sally Rooney">Sally Rooney</option>
+<option value="Zoulfa Katouh">Zoulfa Katouh</option>
+          </select>
+        </label>
+
+        <label class="filter-field">
+          <span>Faixa de preço</span>
+          <select id="priceFilter">
+            <option value="">Todos os preços</option>
+            <option value="ate-50">Até R$ 50</option>
+            <option value="50-80">De R$ 50 a R$ 80</option>
+            <option value="acima-80">Acima de R$ 80</option>
+          </select>
+        </label>
+
+        <div class="filter-note">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <p>Use os filtros para simular uma navegação de e-commerce real.</p>
+        </div>
+      </aside>
+
+      <section class="catalog-content" aria-live="polite">
+        <div class="catalog-toolbar">
+          <div>
+            <p class="toolbar-label">Resultado da busca</p>
+            <strong id="resultCount">8 livros encontrados</strong>
+          </div>
+
+          <label class="sort-field">
+            <span>Ordenar por</span>
+            <select id="sortSelect">
+              <option value="featured">Destaques</option>
+              <option value="price-asc">Menor preço</option>
+              <option value="price-desc">Maior preço</option>
+              <option value="title-asc">Título A–Z</option>
+              <option value="title-desc">Título Z–A</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="catalog-grid" id="catalogGrid">
+          <a class="catalog-book-link book-link" href="biblioteca-noite.html"
+        data-title="A Biblioteca da Meia-Noite"
+        data-author="Matt Haig"
+        data-category="Ficção contemporânea"
+        data-price="59.90"
+        data-rank="1">
+        <article class="catalog-book-card book-card">
+          <div class="catalog-cover-wrap">
+            <span class="catalog-tag">Reflexivo</span>
+            <button class="favorite-btn js-favorite-card" type="button" aria-label="Adicionar A Biblioteca da Meia-Noite aos favoritos" aria-pressed="false"><i class="fa-regular fa-heart"></i></button>
+            <img class="catalog-cover cover" src="assets/fotos/biblioteca-meia-noite.jpg" alt="A Biblioteca da Meia-Noite">
+          </div>
+          <h3 class="book-title">A Biblioteca da Meia-Noite</h3>
+          <p class="author">Matt Haig</p>
+          <p class="catalog-category">Ficção contemporânea</p>
+          <div class="price-row">
+            <span class="price">R$ 59,90</span>
+            <button class="cart-btn" type="button" aria-label="Adicionar A Biblioteca da Meia-Noite ao carrinho">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </button>
+          </div>
+        </article>
+      </a>
+      <a class="catalog-book-link book-link" href="pessoas-normais.html"
+        data-title="Pessoas Normais"
+        data-author="Sally Rooney"
+        data-category="Romance literário"
+        data-price="49.90"
+        data-rank="2">
+        <article class="catalog-book-card book-card">
+          <div class="catalog-cover-wrap">
+            <span class="catalog-tag">Intimista</span>
+            <button class="favorite-btn js-favorite-card" type="button" aria-label="Adicionar Pessoas Normais aos favoritos" aria-pressed="false"><i class="fa-regular fa-heart"></i></button>
+            <img class="catalog-cover cover" src="assets/fotos/pessoas-normais.jpg" alt="Pessoas Normais">
+          </div>
+          <h3 class="book-title">Pessoas Normais</h3>
+          <p class="author">Sally Rooney</p>
+          <p class="catalog-category">Romance literário</p>
+          <div class="price-row">
+            <span class="price">R$ 49,90</span>
+            <button class="cart-btn" type="button" aria-label="Adicionar Pessoas Normais ao carrinho">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </article>
+      </a>
+      <a class="catalog-book-link book-link" href="harry-potter.html"
+        data-title="Harry Potter e a Pedra Filosofal"
+        data-author="J.K. Rowling"
+        data-category="Fantasia"
+        data-price="79.90"
+        data-rank="3">
+        <article class="catalog-book-card book-card">
+          <div class="catalog-cover-wrap">
+            <span class="catalog-tag">Clássico</span>
+            <button class="favorite-btn js-favorite-card" type="button" aria-label="Adicionar Harry Potter e a Pedra Filosofal aos favoritos" aria-pressed="false"><i class="fa-regular fa-heart"></i></button>
+            <img class="catalog-cover cover" src="assets/fotos/harry-potter-pedra-filosofal.jpg" alt="Harry Potter e a Pedra Filosofal">
+          </div>
+          <h3 class="book-title">Harry Potter e a Pedra Filosofal</h3>
+          <p class="author">J.K. Rowling</p>
+          <p class="catalog-category">Fantasia</p>
+          <div class="price-row">
+            <span class="price">R$ 79,90</span>
+            <button class="cart-btn" type="button" aria-label="Adicionar Harry Potter e a Pedra Filosofal ao carrinho">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </button>
+          </div>
+        </article>
+      </a>
+      <a class="catalog-book-link book-link" href="dois-morrem-final.html"
+        data-title="Os Dois Morrem no Final"
+        data-author="Adam Silvera"
+        data-category="Jovem adulto"
+        data-price="55.90"
+        data-rank="4">
+        <article class="catalog-book-card book-card">
+          <div class="catalog-cover-wrap">
+            <span class="catalog-tag">Emocionante</span>
+            <button class="favorite-btn js-favorite-card" type="button" aria-label="Adicionar Os Dois Morrem no Final aos favoritos" aria-pressed="false"><i class="fa-regular fa-heart"></i></button>
+            <img class="catalog-cover cover" src="assets/fotos/os-dois-morrem-no-final.jpg" alt="Os Dois Morrem no Final">
+          </div>
+          <h3 class="book-title">Os Dois Morrem no Final</h3>
+          <p class="author">Adam Silvera</p>
+          <p class="catalog-category">Jovem adulto</p>
+          <div class="price-row">
+            <span class="price">R$ 55,90</span>
+            <button class="cart-btn" type="button" aria-label="Adicionar Os Dois Morrem no Final ao carrinho">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </article>
+      </a>
+      <a class="catalog-book-link book-link" href="o-alquimista.html"
+        data-title="O Alquimista"
+        data-author="Paulo Coelho"
+        data-category="Ficção inspiracional"
+        data-price="44.90"
+        data-rank="5">
+        <article class="catalog-book-card book-card">
+          <div class="catalog-cover-wrap">
+            <span class="catalog-tag">Inspirador</span>
+            <button class="favorite-btn js-favorite-card" type="button" aria-label="Adicionar O Alquimista aos favoritos" aria-pressed="false"><i class="fa-regular fa-heart"></i></button>
+            <img class="catalog-cover cover" src="assets/fotos/o-alquimista.jpg" alt="O Alquimista">
+          </div>
+          <h3 class="book-title">O Alquimista</h3>
+          <p class="author">Paulo Coelho</p>
+          <p class="catalog-category">Ficção inspiracional</p>
+          <div class="price-row">
+            <span class="price">R$ 44,90</span>
+            <button class="cart-btn" type="button" aria-label="Adicionar O Alquimista ao carrinho">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </button>
+          </div>
+        </article>
+      </a>
+      <a class="catalog-book-link book-link" href="irmaos-karamazov.html"
+        data-title="Os Irmãos Karamázov"
+        data-author="Fiódor Dostoiévski"
+        data-category="Clássicos"
+        data-price="129.90"
+        data-rank="6">
+        <article class="catalog-book-card book-card">
+          <div class="catalog-cover-wrap">
+            <span class="catalog-tag">Denso</span>
+            <button class="favorite-btn js-favorite-card" type="button" aria-label="Adicionar Os Irmãos Karamázov aos favoritos" aria-pressed="false"><i class="fa-regular fa-heart"></i></button>
+            <img class="catalog-cover cover" src="assets/fotos/irmaos-karamazov.jpg" alt="Os Irmãos Karamázov">
+          </div>
+          <h3 class="book-title">Os Irmãos Karamázov</h3>
+          <p class="author">Fiódor Dostoiévski</p>
+          <p class="catalog-category">Clássicos</p>
+          <div class="price-row">
+            <span class="price">R$ 129,90</span>
+            <button class="cart-btn" type="button" aria-label="Adicionar Os Irmãos Karamázov ao carrinho">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </button>
+          </div>
+        </article>
+      </a>
+      <a class="catalog-book-link book-link" href="lemon-trees.html"
+        data-title="As Long As The Lemon Trees Grow"
+        data-author="Zoulfa Katouh"
+        data-category="Ficção histórica"
+        data-price="69.90"
+        data-rank="7">
+        <article class="catalog-book-card book-card">
+          <div class="catalog-cover-wrap">
+            <span class="catalog-tag">Sensível</span>
+            <button class="favorite-btn js-favorite-card" type="button" aria-label="Adicionar As Long As The Lemon Trees Grow aos favoritos" aria-pressed="false"><i class="fa-regular fa-heart"></i></button>
+            <img class="catalog-cover cover" src="assets/fotos/lemon-trees-grow.jpg" alt="As Long As The Lemon Trees Grow">
+          </div>
+          <h3 class="book-title">As Long As The Lemon Trees Grow</h3>
+          <p class="author">Zoulfa Katouh</p>
+          <p class="catalog-category">Ficção histórica</p>
+          <div class="price-row">
+            <span class="price">R$ 69,90</span>
+            <button class="cart-btn" type="button" aria-label="Adicionar As Long As The Lemon Trees Grow ao carrinho">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
+          </div>
+        </article>
+      </a>
+      <a class="catalog-book-link book-link" href="sand-whisperers-daughter.html"
+        data-title="Sand Whisperer&#x27;s Daughter"
+        data-author="Ruizi Chén"
+        data-category="Fantasia"
+        data-price="64.90"
+        data-rank="8">
+        <article class="catalog-book-card book-card">
+          <div class="catalog-cover-wrap">
+            <span class="catalog-tag">Aventura</span>
+            <button class="favorite-btn js-favorite-card" type="button" aria-label="Adicionar Sand Whisperer&#x27;s Daughter aos favoritos" aria-pressed="false"><i class="fa-regular fa-heart"></i></button>
+            <img class="catalog-cover cover" src="assets/fotos/stardust-thief.jpg" alt="Sand Whisperer&#x27;s Daughter">
+          </div>
+          <h3 class="book-title">Sand Whisperer&#x27;s Daughter</h3>
+          <p class="author">Ruizi Chén</p>
+          <p class="catalog-category">Fantasia</p>
+          <div class="price-row">
+            <span class="price">R$ 64,90</span>
+            <button class="cart-btn" type="button" aria-label="Adicionar Sand Whisperer&#x27;s Daughter ao carrinho">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </button>
+          </div>
+        </article>
+      </a>
+        </div>
+
+        <div class="catalog-empty" id="catalogEmpty" hidden>
+          <i class="fa-regular fa-face-frown-open"></i>
+          <h3>Nenhum livro encontrado</h3>
+          <p>Tente alterar os filtros ou buscar por outro título, autor ou categoria.</p>
+        </div>
+      </section>
+    </section>
+
+
+    <section class="benefits">
+      <div class="benefit"><i class="fa-solid fa-truck"></i><div><strong>Frete grátis</strong><span>Para todo o Brasil</span></div></div>
+      <div class="benefit"><i class="fa-regular fa-credit-card"></i><div><strong>Até 6x sem juros</strong><span>Parcela mínima de R$50</span></div></div>
+      <div class="benefit"><i class="fa-solid fa-tag"></i><div><strong>Descontos exclusivos</strong><span>Para assinantes</span></div></div>
+      <div class="benefit"><i class="fa-regular fa-user"></i><div><strong>Atendimento humanizado</strong><span>Seg à Sex das 9h às 18h</span></div></div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Receba novidades e descontos</h4>
+        <p>Cadastre-se e seja a primeira pessoa a saber sobre lançamentos e promoções.</p>
+        <form class="newsletter">
+          <input type="email" placeholder="Seu melhor e-mail">
+          <button type="submit">Cadastrar</button>
+        </form>
+      </div>
+      <div>
+        <h4>Institucional</h4>
+        <a href="#">Quem somos</a><br>
+        <a href="#">Nossa história</a><br>
+        <a href="#">Trabalhe conosco</a>
+      </div>
+      <div>
+        <h4>Ajuda</h4>
+        <a href="#">Central de ajuda</a><br>
+        <a href="#">Como comprar</a><br>
+        <a href="#">Formas de pagamento</a><br>
+        <a href="#">Prazo de entrega</a>
+      </div>
+      <div>
+        <h4>Políticas</h4>
+        <a href="#">Trocas e devoluções</a><br>
+        <a href="#">Política de privacidade</a><br>
+        <a href="#">Termos de uso</a>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <p><i class="fa-brands fa-whatsapp"></i> (11) 99999-9999</p>
+        <p><i class="fa-regular fa-envelope"></i> contato@mardehistorias.com.br</p>
+        <div class="socials">
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-tiktok"></i>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Mar de Histórias Livraria. Todos os direitos reservados.</span>
+      <div class="payments"><span>VISA</span><span>mastercard</span><span>elo</span><span>pix</span><span>Boleto</span></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/catalogo.js"></script>
+</body>
+</html>

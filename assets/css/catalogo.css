@@ -1,0 +1,444 @@
+/* =========================================================
+   Mar de Histórias — catálogo
+   Página com filtros, ordenação e vitrine completa
+   ========================================================= */
+
+.catalog-page{
+  padding:34px 7% 0;
+}
+
+.catalog-hero{
+  min-height:255px;
+  margin-bottom:28px;
+  padding:38px 42px;
+  display:grid;
+  grid-template-columns:minmax(320px,1.35fr) minmax(280px,.85fr);
+  gap:34px;
+  align-items:center;
+  border:1px solid var(--borda);
+  border-radius:28px;
+  background:
+    radial-gradient(circle at 85% 18%,rgba(178,122,111,.18),transparent 30%),
+    linear-gradient(120deg,rgba(255,252,249,.92),rgba(244,226,218,.8));
+  box-shadow:var(--sombra);
+  position:relative;
+  overflow:hidden;
+}
+
+.catalog-hero::before{
+  content:"";
+  width:520px;
+  height:520px;
+  border-radius:50%;
+  position:absolute;
+  right:-210px;
+  top:-245px;
+  border:1px solid rgba(162,119,108,.18);
+}
+
+.catalog-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:12px;
+  color:var(--marrom);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+
+.catalog-hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:64px;
+  line-height:.94;
+  color:#6e4b43;
+  margin-bottom:16px;
+  font-weight:600;
+}
+
+.catalog-hero p{
+  max-width:680px;
+  color:#5e514d;
+  font-size:16px;
+  line-height:1.85;
+}
+
+.catalog-stats{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.catalog-stats article{
+  min-height:122px;
+  padding:22px 16px;
+  display:grid;
+  align-content:center;
+  text-align:center;
+  border:1px solid rgba(192,153,143,.48);
+  background:rgba(255,250,247,.78);
+  border-radius:20px;
+  backdrop-filter:blur(12px);
+}
+
+.catalog-stats strong{
+  display:block;
+  font-size:34px;
+  color:#795248;
+  margin-bottom:6px;
+}
+
+.catalog-stats span{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45;
+}
+
+.catalog-layout{
+  display:grid;
+  grid-template-columns:300px 1fr;
+  gap:28px;
+  align-items:start;
+}
+
+.catalog-filters,
+.catalog-content{
+  border:1px solid var(--borda);
+  border-radius:24px;
+  background:rgba(255,255,255,.54);
+  box-shadow:0 16px 40px rgba(82,45,36,.08);
+}
+
+.catalog-filters{
+  position:sticky;
+  top:112px;
+  padding:25px;
+}
+
+.filters-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:24px;
+}
+
+.filters-title h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:31px;
+  font-weight:600;
+  color:#5f4039;
+}
+
+.clear-filters{
+  min-height:38px;
+  padding:0 14px;
+  border:1px solid var(--borda);
+  border-radius:999px;
+  background:#fff7f3;
+  color:var(--marrom);
+  font-size:13px;
+  font-weight:700;
+  transition:.25s ease;
+}
+
+.clear-filters:hover{
+  background:var(--marrom);
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+.filter-field{
+  display:grid;
+  gap:9px;
+  margin-bottom:18px;
+}
+
+.filter-field span,
+.sort-field span{
+  font-size:13px;
+  color:#71564f;
+  font-weight:700;
+}
+
+.filter-field select,
+.sort-field select{
+  width:100%;
+  height:50px;
+  border:1px solid var(--borda);
+  border-radius:14px;
+  background:rgba(255,255,255,.95);
+  color:var(--texto);
+  padding:0 15px;
+  outline:0;
+  transition:.25s ease;
+}
+
+.filter-field select:focus,
+.sort-field select:focus{
+  border-color:#c79d92;
+  box-shadow:0 0 0 4px rgba(143,91,80,.08);
+}
+
+.filter-note{
+  margin-top:24px;
+  padding:17px;
+  border-radius:18px;
+  border:1px dashed rgba(177,110,98,.42);
+  background:#fff8f5;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.filter-note i{
+  color:#b16e62;
+  margin-top:3px;
+}
+
+.filter-note p{
+  font-size:13px;
+  line-height:1.65;
+  color:var(--muted);
+}
+
+.catalog-content{
+  padding:26px;
+}
+
+.catalog-toolbar{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:22px;
+  padding-bottom:24px;
+  margin-bottom:26px;
+  border-bottom:1px solid var(--borda);
+}
+
+.toolbar-label{
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--muted);
+  margin-bottom:8px;
+  font-weight:700;
+}
+
+#resultCount{
+  font-size:25px;
+  font-family:'Cormorant Garamond',serif;
+  color:#65453d;
+  font-weight:600;
+}
+
+.sort-field{
+  width:min(260px,100%);
+  display:grid;
+  gap:9px;
+}
+
+.catalog-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:28px 24px;
+}
+
+.catalog-book-link{
+  display:block;
+  color:inherit;
+  min-width:0;
+  animation:rise .65s ease both;
+}
+
+.catalog-book-link.is-hidden{
+  display:none;
+}
+
+.catalog-book-card{
+  height:100%;
+  padding:16px;
+  border:1px solid rgba(229,207,198,.82);
+  border-radius:22px;
+  background:rgba(255,250,247,.82);
+  transition:.3s ease;
+}
+
+.catalog-book-card:hover{
+  transform:translateY(-6px);
+  border-color:#d3aa9f;
+  box-shadow:0 20px 38px rgba(82,45,36,.12);
+}
+
+
+.catalog-book-card .book-title{
+  margin-top:0;
+  font-size:15px;
+  line-height:1.42;
+  font-weight:700;
+  min-height:44px;
+}
+
+.catalog-book-card .author{
+  margin-top:5px;
+  min-height:20px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.55;
+}
+
+.catalog-book-card .price-row{
+  margin-top:18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.catalog-book-card .price{
+  font-size:18px;
+  font-weight:700;
+  color:#2f211e;
+}
+
+.catalog-book-card .cart-btn{
+  width:38px;
+  height:38px;
+  border:1px solid #c89589;
+  color:#b6776a;
+  border-radius:10px;
+  background:white;
+  display:grid;
+  place-items:center;
+  transition:.25s ease;
+  position:relative;
+  z-index:2;
+}
+
+.catalog-book-card .cart-btn:hover{
+  background:#b6776a;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+.catalog-cover-wrap{
+  position:relative;
+  min-height:346px;
+  border-radius:17px;
+  background:linear-gradient(145deg,#fffaf7,#f2dfd8);
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  margin-bottom:16px;
+}
+
+.catalog-cover{
+  width:min(100%,215px);
+  height:320px;
+  aspect-ratio:auto;
+  object-fit:contain;
+  border-radius:8px;
+  box-shadow:0 22px 36px rgba(61,35,30,.18);
+}
+
+
+.catalog-cover-wrap .favorite-btn{
+  position:absolute;
+  top:14px;
+  right:14px;
+}
+
+.catalog-tag{
+  position:absolute;
+  z-index:1;
+  top:14px;
+  left:14px;
+  border-radius:999px;
+  padding:8px 11px;
+  background:rgba(255,249,246,.96);
+  border:1px solid var(--borda);
+  color:#8c584d;
+  font-size:12px;
+  font-weight:700;
+}
+
+
+.catalog-category{
+  display:inline-flex;
+  align-items:center;
+  min-height:26px;
+  margin-top:11px;
+  padding:5px 11px;
+  border-radius:999px;
+  background:#f3dfd8;
+  color:#805148;
+  font-size:12px;
+  font-weight:700;
+}
+
+.catalog-book-card .price-row{
+  margin-top:18px;
+}
+
+.catalog-empty{
+  min-height:320px;
+  padding:40px 20px;
+  border:1px dashed #d5aea3;
+  border-radius:22px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  background:#fff8f5;
+}
+
+.catalog-empty[hidden]{display:none;}
+
+.catalog-empty i{
+  font-size:42px;
+  color:#b16e62;
+  margin-bottom:14px;
+}
+
+.catalog-empty h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;
+  font-weight:600;
+  color:#65453d;
+  margin-bottom:8px;
+}
+
+.catalog-empty p{
+  max-width:450px;
+  line-height:1.7;
+  color:var(--muted);
+}
+
+@media(max-width:1320px){
+  .catalog-grid{grid-template-columns:repeat(3,1fr)}
+  .catalog-stats{grid-template-columns:1fr}
+  .catalog-stats article{min-height:86px}
+}
+
+@media(max-width:1020px){
+  .catalog-page{padding:28px 5% 0}
+  .catalog-hero{grid-template-columns:1fr;padding:30px}
+  .catalog-hero h1{font-size:52px}
+  .catalog-stats{grid-template-columns:repeat(3,1fr)}
+  .catalog-layout{grid-template-columns:1fr}
+  .catalog-filters{position:static}
+  .catalog-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:720px){
+  .catalog-hero{padding:25px}
+  .catalog-hero h1{font-size:44px}
+  .catalog-stats{grid-template-columns:1fr}
+  .catalog-toolbar{align-items:stretch;flex-direction:column}
+  .sort-field{width:100%}
+  .catalog-content{padding:18px}
+  .catalog-grid{grid-template-columns:1fr}
+  .catalog-cover-wrap{min-height:330px}
+}

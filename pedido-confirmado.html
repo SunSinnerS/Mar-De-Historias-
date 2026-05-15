@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/checkout.css">
+  <title>Pedido confirmado | Mar de Histórias</title>
+</head>
+<body data-page="pedido-confirmado">
+
+  <header class="topbar" id="topbar">
+    <a class="logo" href="index.html">
+      <h1>Mar de Histórias</h1>
+      <span>LIVRARIA</span>
+    </a>
+
+    <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <nav class="nav">
+      <a href="index.html">Início</a>
+      <a href="catalogo.html">Livros <i class="fa-solid fa-chevron-down"></i></a>
+      <a href="index.html#mais-comprados">Mais Vendidos</a>
+      <a href="catalogo.html">Lançamentos</a>
+      <a href="catalogo.html#filtros-catalogo">Categorias <i class="fa-solid fa-chevron-down"></i></a>
+      <a href="catalogo.html">Ofertas</a>
+    </nav>
+
+    <form class="search">
+      <input type="search" placeholder="Buscar por título, autor ou categoria...">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </form>
+
+    <div class="actions">
+      <a class="icon-link account-link" href="login.html"><i class="fa-regular fa-user"></i> <span data-account-label>Entrar</span></a>
+      <a class="icon-link favorite-header-link" href="favoritos.html"><i class="fa-regular fa-heart"></i> Favoritos <span class="favorite-badge">0</span></a>
+      <a class="icon-link" href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i> Carrinho <span class="badge">0</span></a>
+    </div>
+  </header>
+
+  <main class="checkout-page">
+    <nav class="breadcrumb checkout-breadcrumb">
+      <a href="index.html">Início</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span>Pedido confirmado</span>
+    </nav>
+
+    <section class="checkout-hero order-success-hero">
+      <div>
+        <p class="checkout-eyebrow">Compra concluída</p>
+        <h1>Pedido confirmado</h1>
+        <p>Seu fluxo de compra foi finalizado no protótipo da Mar de Histórias.</p>
+      </div>
+
+      <div class="checkout-progress" aria-label="Etapas da compra">
+        <article class="is-done"><span>1</span><strong>Carrinho</strong></article>
+        <article class="is-done"><span>2</span><strong>Endereço</strong></article>
+        <article class="is-done"><span>3</span><strong>Pagamento</strong></article>
+        <article class="is-active"><span>4</span><strong>Pedido</strong></article>
+      </div>
+    </section>
+
+    <section class="order-success-layout">
+      <section class="order-success-panel">
+        <div class="success-badge">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+
+        <div class="success-copy">
+          <p class="panel-kicker">Confirmação</p>
+          <h2>Obrigado pela compra!</h2>
+          <p id="orderSuccessMessage">Carregando os detalhes do pedido...</p>
+        </div>
+
+        <div class="order-highlight-grid">
+          <article>
+            <span>Número do pedido</span>
+            <strong id="orderNumber">—</strong>
+          </article>
+          <article>
+            <span>Pagamento</span>
+            <strong id="orderPayment">—</strong>
+          </article>
+          <article>
+            <span>Total</span>
+            <strong id="orderTotal">R$ 0,00</strong>
+          </article>
+        </div>
+
+        <div class="order-detail-grid">
+          <section class="order-detail-card">
+            <p class="panel-kicker">Entrega</p>
+            <h3>Endereço</h3>
+            <div id="orderAddress"></div>
+          </section>
+
+          <section class="order-detail-card">
+            <p class="panel-kicker">Envio</p>
+            <h3>Prazo e frete</h3>
+            <div id="orderDelivery"></div>
+          </section>
+        </div>
+
+        <section class="confirmed-items-section">
+          <p class="panel-kicker">Itens</p>
+          <h3>Livros do pedido</h3>
+          <div class="confirmed-items" id="confirmedItems"></div>
+        </section>
+
+        <div class="checkout-actions success-actions">
+          <a class="secondary-action" href="index.html">
+            <i class="fa-solid fa-house"></i>
+            Voltar ao início
+          </a>
+          <a class="primary-action link-action" href="catalogo.html">
+            Continuar comprando
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </section>
+
+      <aside class="checkout-summary final-summary-card">
+        <div class="summary-head">
+          <p class="summary-kicker">Resumo final</p>
+          <h2>Pedido concluído</h2>
+        </div>
+
+        <dl class="summary-values checkout-values">
+          <div>
+            <dt>Subtotal</dt>
+            <dd id="confirmedSubtotal">R$ 0,00</dd>
+          </div>
+          <div>
+            <dt>Frete</dt>
+            <dd id="confirmedShipping">R$ 0,00</dd>
+          </div>
+          <div class="summary-total">
+            <dt>Total</dt>
+            <dd id="confirmedTotal">R$ 0,00</dd>
+          </div>
+        </dl>
+
+        <div class="checkout-summary-note final-note">
+          <i class="fa-solid fa-book-open-reader"></i>
+          <p>O carrinho foi limpo após a confirmação para simular o encerramento do pedido.</p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Receba novidades e descontos</h4>
+        <p>Cadastre-se e seja a primeira pessoa a saber sobre lançamentos e promoções.</p>
+        <form class="newsletter">
+          <input type="email" placeholder="Seu melhor e-mail">
+          <button type="submit">Cadastrar</button>
+        </form>
+      </div>
+      <div>
+        <h4>Institucional</h4>
+        <a href="#">Quem somos</a><br>
+        <a href="#">Nossa história</a><br>
+        <a href="#">Trabalhe conosco</a>
+      </div>
+      <div>
+        <h4>Ajuda</h4>
+        <a href="#">Central de ajuda</a><br>
+        <a href="#">Como comprar</a><br>
+        <a href="#">Formas de pagamento</a><br>
+        <a href="#">Prazo de entrega</a>
+      </div>
+      <div>
+        <h4>Políticas</h4>
+        <a href="#">Trocas e devoluções</a><br>
+        <a href="#">Política de privacidade</a><br>
+        <a href="#">Termos de uso</a>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <p><i class="fa-brands fa-whatsapp"></i> (11) 99999-9999</p>
+        <p><i class="fa-regular fa-envelope"></i> contato@mardehistorias.com.br</p>
+        <div class="socials">
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-tiktok"></i>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Mar de Histórias Livraria. Todos os direitos reservados.</span>
+      <div class="payments"><span>VISA</span><span>mastercard</span><span>elo</span><span>pix</span><span>Boleto</span></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/checkout.js"></script>
+</body>
+</html>
