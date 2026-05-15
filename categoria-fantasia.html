@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/categorias.css">
+  <title>Fantasia | Categorias | Mar de Histórias</title>
+</head>
+<body data-page="categoria" data-category-slug="fantasia">
+
+  <header class="topbar" id="topbar">
+    <a class="logo" href="index.html">
+      <h1>Mar de Histórias</h1>
+      <span>LIVRARIA</span>
+    </a>
+
+    <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <nav class="nav">
+      <a href="index.html">Início</a>
+      <a href="catalogo.html">Livros <i class="fa-solid fa-chevron-down"></i></a>
+      <a href="index.html#mais-comprados">Mais Vendidos</a>
+      <a href="catalogo.html">Lançamentos</a>
+      <a class="nav-categories-active" href="categorias.html" aria-current="page">Categorias <i class="fa-solid fa-chevron-down"></i></a>
+      <a href="ofertas.html">Ofertas</a>
+    </nav>
+
+    <form class="search">
+      <input type="search" placeholder="Buscar por título, autor ou categoria...">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </form>
+
+    <div class="actions">
+      <a class="icon-link account-link" href="login.html"><i class="fa-regular fa-user"></i> <span data-account-label>Entrar</span></a>
+      <a class="icon-link favorite-header-link" href="favoritos.html"><i class="fa-regular fa-heart"></i> Favoritos <span class="favorite-badge">0</span></a>
+      <a class="icon-link" href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i> Carrinho <span class="badge">0</span></a>
+    </div>
+  </header>
+
+  <main class="categories-page category-detail-page">
+    <nav class="breadcrumb categories-breadcrumb">
+      <a href="index.html">Início</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <a href="categorias.html">Categorias</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span>Fantasia</span>
+    </nav>
+
+    <section class="category-detail-hero">
+      <div class="category-detail-copy">
+        <div class="category-detail-icon">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </div>
+        <p class="categories-eyebrow">Mundos imaginários</p>
+        <h1>Fantasia</h1>
+        <p>A categoria Fantasia reúne histórias em que o impossível ganha forma. São títulos para leitores que gostam de mundos encantados, heróis improváveis e tramas conduzidas por descoberta, risco e imaginação.</p>
+      </div>
+
+      <aside class="category-detail-summary">
+        <article>
+          <strong>2 títulos</strong>
+          <span>na seleção atual</span>
+        </article>
+        <article>
+          <strong>R$ 72,40</strong>
+          <span>preço médio</span>
+        </article>
+        <article>
+          <strong>Aventura e encantamento</strong>
+          <span>característica da categoria</span>
+        </article>
+      </aside>
+    </section>
+
+    <section class="category-chip-row" aria-label="Alternar categoria">
+      <a class="category-chip is-active" href="categoria-fantasia.html" aria-current="page">Fantasia</a>
+        <a class="category-chip" href="categoria-romance-literario.html">Romance literário</a>
+        <a class="category-chip" href="categoria-classicos.html">Clássicos</a>
+        <a class="category-chip" href="categoria-jovem-adulto.html">Jovem adulto</a>
+        <a class="category-chip" href="categoria-ficcao-historica.html">Ficção histórica</a>
+        <a class="category-chip" href="categoria-ficcao-inspiracional.html">Ficção inspiracional</a>
+        <a class="category-chip" href="categoria-ficcao-contemporanea.html">Ficção contemporânea</a>
+    </section>
+
+    <section class="category-detail-layout">
+      <aside class="category-side-panel">
+        <div>
+          <p class="panel-kicker">Curadoria</p>
+          <h2>Sobre a categoria</h2>
+          <p>Magia, aventuras e universos que transformam a leitura em uma jornada épica.</p>
+        </div>
+
+        <a class="category-return-link" href="categorias.html">
+          <i class="fa-solid fa-arrow-left"></i>
+          Ver todas as categorias
+        </a>
+
+        <div class="category-side-note">
+          <i class="fa-solid fa-heart"></i>
+          <p>Use favoritos e carrinho nos cards desta seleção.</p>
+        </div>
+      </aside>
+
+      <section class="category-content" aria-live="polite">
+        <div class="category-toolbar">
+          <div>
+            <p class="toolbar-label">Livros da categoria</p>
+            <strong id="categoryResultCount">2 títulos encontrados</strong>
+          </div>
+
+          <div class="category-controls">
+            <label class="category-inline-search">
+              <span>Filtrar nesta categoria</span>
+              <div>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input id="categoryBookSearch" type="search" placeholder="Título ou autor...">
+              </div>
+            </label>
+
+            <label class="category-sort-field">
+              <span>Ordenar</span>
+              <select id="categorySort">
+                <option value="featured">Destaques</option>
+                <option value="price-asc">Menor preço</option>
+                <option value="price-desc">Maior preço</option>
+                <option value="title-asc">Título A–Z</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="category-books-grid" id="categoryGrid">
+          <a class="category-book-link book-link"
+        href="harry-potter.html"
+        data-title="Harry Potter e a Pedra Filosofal"
+        data-author="J.K. Rowling"
+        data-category="Fantasia"
+        data-price="79.90"
+        data-rank="3">
+        <article class="category-book-card book-card">
+          <div class="category-book-cover-wrap">
+            <button class="favorite-btn js-favorite-card" type="button" aria-label="Adicionar Harry Potter e a Pedra Filosofal aos favoritos" aria-pressed="false"><i class="fa-regular fa-heart"></i></button>
+            <img class="category-book-cover cover" src="assets/fotos/harry-potter-pedra-filosofal.jpg" alt="Harry Potter e a Pedra Filosofal">
+          </div>
+          <p class="category-label">Fantasia</p>
+          <h3 class="book-title">Harry Potter e a Pedra Filosofal</h3>
+          <p class="author">J.K. Rowling</p>
+          <div class="price-row">
+            <span class="price">R$ 79,90</span>
+            <button class="cart-btn" type="button" aria-label="Adicionar Harry Potter e a Pedra Filosofal ao carrinho">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </button>
+          </div>
+        </article>
+      </a>
+          <a class="category-book-link book-link"
+        href="sand-whisperers-daughter.html"
+        data-title="Sand Whisperer&#x27;s Daughter"
+        data-author="Ruizi Chén"
+        data-category="Fantasia"
+        data-price="64.90"
+        data-rank="8">
+        <article class="category-book-card book-card">
+          <div class="category-book-cover-wrap">
+            <button class="favorite-btn js-favorite-card" type="button" aria-label="Adicionar Sand Whisperer&#x27;s Daughter aos favoritos" aria-pressed="false"><i class="fa-regular fa-heart"></i></button>
+            <img class="category-book-cover cover" src="assets/fotos/stardust-thief.jpg" alt="Sand Whisperer&#x27;s Daughter">
+          </div>
+          <p class="category-label">Fantasia</p>
+          <h3 class="book-title">Sand Whisperer&#x27;s Daughter</h3>
+          <p class="author">Ruizi Chén</p>
+          <div class="price-row">
+            <span class="price">R$ 64,90</span>
+            <button class="cart-btn" type="button" aria-label="Adicionar Sand Whisperer&#x27;s Daughter ao carrinho">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </button>
+          </div>
+        </article>
+      </a>
+        </div>
+
+        <div class="category-empty" id="categoryEmpty" hidden>
+          <i class="fa-regular fa-face-frown-open"></i>
+          <h3>Nenhum livro encontrado</h3>
+          <p>Altere o filtro de busca para visualizar os títulos da categoria.</p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Receba novidades e descontos</h4>
+        <p>Cadastre-se e seja a primeira pessoa a saber sobre lançamentos e promoções.</p>
+        <form class="newsletter">
+          <input type="email" placeholder="Seu melhor e-mail">
+          <button type="submit">Cadastrar</button>
+        </form>
+      </div>
+      <div>
+        <h4>Institucional</h4>
+        <a href="quem-somos.html">Quem somos</a><br>
+        <a href="quem-somos.html#historia">Nossa história</a><br>
+        <a href="contato.html#trabalhe-conosco">Trabalhe conosco</a>
+      </div>
+      <div>
+        <h4>Ajuda</h4>
+        <a href="contato.html#central-ajuda">Central de ajuda</a><br>
+        <a href="contato.html#como-comprar">Como comprar</a><br>
+        <a href="contato.html#formas-pagamento">Formas de pagamento</a><br>
+        <a href="contato.html#prazo-entrega">Prazo de entrega</a>
+      </div>
+      <div>
+        <h4>Políticas</h4>
+        <a href="trocas-devolucoes.html">Trocas e devoluções</a><br>
+        <a href="politica-privacidade.html">Política de privacidade</a><br>
+        <a href="termos-de-uso.html">Termos de uso</a>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <p><i class="fa-brands fa-whatsapp"></i> (11) 99999-9999</p>
+        <p><i class="fa-regular fa-envelope"></i> contato@mardehistorias.com.br</p>
+        <div class="socials">
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-tiktok"></i>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Mar de Histórias Livraria. Todos os direitos reservados.</span>
+      <div class="payments"><span>VISA</span><span>mastercard</span><span>elo</span><span>pix</span><span>Boleto</span></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/categorias.js"></script>
+</body>
+</html>
