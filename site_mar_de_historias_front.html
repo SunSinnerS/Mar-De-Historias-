@@ -8,27 +8,353 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<<<<<<< HEAD
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/home.css">
 </head>
 <body>
   <header class="topbar" id="topbar">
     <a class="logo" href="index.html">
+=======
+  <style>
+    :root{
+      --fundo:#fbf4ef;
+      --fundo-2:#fffaf6;
+      --texto:#211918;
+      --muted:#6f5a52;
+      --marrom:#8f5b50;
+      --marrom-2:#b27a6f;
+      --borda:#e5cfc6;
+      --sombra:0 18px 45px rgba(82,45,36,.13);
+      --radius:18px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',sans-serif;
+      color:var(--texto);
+      background:linear-gradient(180deg,#fff7f2 0%,#fbf1eb 45%,#fffaf7 100%);
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    button,input{font:inherit}
+
+    .topbar{
+      height:86px;
+      padding:0 8%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:28px;
+      background:rgba(255,248,244,.86);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(120,83,75,.13);
+      position:sticky;
+      top:0;
+      z-index:50;
+    }
+    .logo{
+      min-width:230px;
+      line-height:.9;
+    }
+    .logo h1{
+      font-family:'Cormorant Garamond',serif;
+      font-size:37px;
+      font-weight:600;
+      letter-spacing:-1px;
+    }
+    .logo span{
+      display:block;
+      text-align:center;
+      font-size:12px;
+      letter-spacing:8px;
+      margin-top:6px;
+    }
+    .nav{
+      display:flex;
+      gap:30px;
+      align-items:center;
+      font-size:14px;
+      font-weight:600;
+      white-space:nowrap;
+    }
+    .nav a{transition:.25s ease}
+    .nav a:hover{color:var(--marrom)}
+
+    .search{
+      width:min(420px,28vw);
+      height:46px;
+      border:1px solid var(--borda);
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      background:rgba(255,255,255,.55);
+      padding:0 15px;
+    }
+    .search input{
+      border:0;
+      outline:0;
+      background:transparent;
+      width:100%;
+      font-size:13px;
+      color:var(--texto);
+    }
+    .actions{display:flex;gap:26px;align-items:center;font-size:14px;font-weight:600}
+    .icon-link{display:flex;align-items:center;gap:8px;position:relative}
+    .badge{
+      position:absolute;
+      top:-10px;
+      right:-12px;
+      width:16px;
+      height:16px;
+      border-radius:50%;
+      background:var(--marrom);
+      color:white;
+      font-size:10px;
+      display:grid;
+      place-items:center;
+    }
+
+    .hero{
+      min-height:405px;
+      display:grid;
+      grid-template-columns:38% 62%;
+      position:relative;
+      overflow:hidden;
+      border-bottom:1px solid rgba(120,83,75,.08);
+    }
+    .hero-img{
+      position:relative;
+      background:url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1300&q=90') center/cover no-repeat;
+    }
+    .hero-img::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg,rgba(0,0,0,.08),rgba(251,244,239,.96) 88%,#fbf4ef 100%);
+    }
+    .hero-content{
+      position:relative;
+      padding:78px 8% 55px 8%;
+      background:
+        radial-gradient(circle at 85% 22%,rgba(163,112,101,.12),transparent 24%),
+        linear-gradient(120deg,#fbf1eb 0%,#fff8f3 47%,#f5e8e1 100%);
+      isolation:isolate;
+    }
+    .hero-content::before{
+      content:"";
+      position:absolute;
+      right:-70px;
+      bottom:-120px;
+      width:900px;
+      height:330px;
+      background:radial-gradient(ellipse at center,rgba(167,129,116,.12),transparent 58%);
+      border-radius:50%;
+      transform:rotate(-12deg);
+      z-index:-1;
+    }
+    .hero h2{
+      font-family:'Cormorant Garamond',serif;
+      font-size:60px;
+      line-height:.92;
+      max-width:520px;
+      color:#6e4b43;
+      margin-bottom:24px;
+    }
+    .hero p{
+      color:#5e514d;
+      font-size:17px;
+      line-height:1.8;
+      max-width:510px;
+      margin-bottom:30px;
+    }
+    .btn{
+      border:0;
+      background:linear-gradient(135deg,var(--marrom-2),#95675f);
+      color:white;
+      padding:15px 34px;
+      border-radius:8px;
+      cursor:pointer;
+      box-shadow:0 12px 24px rgba(125,79,70,.18);
+      transition:.28s ease;
+    }
+    .btn:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(125,79,70,.25)}
+    .stamp{
+      position:absolute;
+      top:50px;
+      right:9%;
+      width:160px;
+      height:160px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      color:#9b746a;
+      opacity:.75;
+      border:1px dashed rgba(130,88,79,.35);
+      font-family:'Cormorant Garamond',serif;
+      text-align:center;
+      transform:rotate(-13deg);
+    }
+    .stamp i{font-size:42px;margin-bottom:6px;display:block}
+    .stamp small{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase}
+
+    main{padding:22px 7% 0}
+    .section-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin:0 0 22px;
+    }
+    .section-head h3{
+      font-family:'Cormorant Garamond',serif;
+      font-size:26px;
+      font-weight:600;
+    }
+    .see-all{font-size:14px;color:var(--marrom);font-weight:600}
+
+    .books{
+      display:grid;
+      grid-template-columns:repeat(8,1fr);
+      gap:38px;
+    }
+    .book-link{display:block;color:inherit;}
+    .book-card{
+      min-width:0;
+      animation:rise .7s ease both;
+    }
+    .book-card:nth-child(2){animation-delay:.05s}.book-card:nth-child(3){animation-delay:.1s}.book-card:nth-child(4){animation-delay:.15s}.book-card:nth-child(5){animation-delay:.2s}.book-card:nth-child(6){animation-delay:.25s}.book-card:nth-child(7){animation-delay:.3s}.book-card:nth-child(8){animation-delay:.35s}
+    @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+    .cover{
+      width:100%;
+      aspect-ratio:3/4.45;
+      border-radius:8px;
+      object-fit:cover;
+      box-shadow:var(--sombra);
+      transition:.3s ease;
+      background:#ddd;
+    }
+    .book-card:hover .cover{transform:translateY(-7px) scale(1.02)}
+    .book-title{
+      margin-top:14px;
+      font-size:14px;
+      line-height:1.35;
+      font-weight:600;
+      min-height:38px;
+    }
+    .author{font-size:13px;color:var(--muted);margin-top:4px;min-height:20px}
+    .price-row{margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .price{font-size:17px;font-weight:700}
+    .cart-btn{
+      width:32px;
+      height:32px;
+      border:1px solid #c89589;
+      color:#b6776a;
+      border-radius:6px;
+      background:white;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      transition:.25s ease;
+    }
+    .cart-btn:hover{background:#b6776a;color:#fff;transform:translateY(-2px)}
+
+    .benefits{
+      margin:34px 0 22px;
+      border:1px solid var(--borda);
+      border-radius:10px;
+      padding:20px 48px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:34px;
+      background:rgba(255,255,255,.38);
+    }
+    .benefit{display:flex;align-items:center;gap:16px;color:#352723}
+    .benefit i{font-size:28px;color:#b16e62}
+    .benefit strong{display:block;font-size:15px;margin-bottom:4px}
+    .benefit span{font-size:13px;color:var(--muted)}
+
+    footer{
+      background:linear-gradient(135deg,#a9786f,#8d5b52);
+      color:white;
+      margin-top:0;
+    }
+    .footer-grid{
+      padding:28px 8% 24px;
+      display:grid;
+      grid-template-columns:2.1fr 1fr 1fr 1.1fr 1.35fr;
+      gap:52px;
+      align-items:start;
+    }
+    footer h4{
+      font-family:'Cormorant Garamond',serif;
+      font-size:21px;
+      margin-bottom:14px;
+      font-weight:600;
+    }
+    footer p, footer a{font-size:14px;color:rgba(255,255,255,.86);line-height:2}
+    .newsletter{display:flex;margin-top:14px;max-width:360px}
+    .newsletter input{height:44px;border:0;padding:0 15px;outline:0;flex:1;border-radius:5px 0 0 5px}
+    .newsletter button{border:0;background:#744940;color:white;padding:0 20px;border-radius:0 5px 5px 0;cursor:pointer}
+    .socials{display:flex;gap:14px;margin-top:12px;font-size:22px}
+    .footer-bottom{
+      padding:18px 8%;
+      background:rgba(67,39,35,.22);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      font-size:13px;
+      color:rgba(255,255,255,.88);
+    }
+    .payments{display:flex;align-items:center;gap:25px;font-weight:700;font-size:20px}
+
+    .menu-btn{display:none;background:none;border:0;font-size:24px;color:#4a3733}
+
+    @media(max-width:1280px){
+      .books{grid-template-columns:repeat(4,1fr)}
+      .topbar{padding:0 4%}.nav{gap:18px}.logo{min-width:200px}.search{width:300px}
+    }
+    @media(max-width:940px){
+      .topbar{height:auto;padding:18px 5%;flex-wrap:wrap}.menu-btn{display:block}.nav{order:5;width:100%;display:none;grid-template-columns:1fr 1fr;gap:16px}.topbar.active .nav{display:grid}.search{width:100%;order:4}.actions{margin-left:auto}.hero{grid-template-columns:1fr}.hero-img{min-height:230px}.hero-img::after{background:linear-gradient(180deg,rgba(0,0,0,.1),#fbf4ef 100%)}.hero-content{padding:45px 7%}.hero h2{font-size:46px}.stamp{display:none}.benefits{grid-template-columns:1fr 1fr;padding:22px}.footer-grid{grid-template-columns:1fr 1fr}.footer-bottom{flex-direction:column;align-items:flex-start}.payments{flex-wrap:wrap}.books{gap:24px}
+    }
+    @media(max-width:620px){
+      main{padding:24px 5% 0}.logo h1{font-size:30px}.logo span{font-size:10px;letter-spacing:6px}.actions{font-size:0;gap:18px}.actions i{font-size:18px}.hero h2{font-size:40px}.hero p{font-size:15px}.books{grid-template-columns:repeat(2,1fr);gap:28px 18px}.benefits{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr;gap:26px}.footer-bottom{font-size:12px}.payments{font-size:16px}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar" id="topbar">
+    <a class="logo" href="#">
+>>>>>>> 817570e6077b2f07533ff7e08d1f2d4b972aca62
       <h1>Mar de Histórias</h1>
       <span>LIVRARIA</span>
     </a>
 
+<<<<<<< HEAD
     <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">
+=======
+    <button class="menu-btn" onclick="document.getElementById('topbar').classList.toggle('active')">
+>>>>>>> 817570e6077b2f07533ff7e08d1f2d4b972aca62
       <i class="fa-solid fa-bars"></i>
     </button>
 
     <nav class="nav">
+<<<<<<< HEAD
       <a href="index.html">Início</a>
       <a href="catalogo.html">Livros <i class="fa-solid fa-chevron-down"></i></a>
       <a href="#mais-comprados">Mais Vendidos</a>
       <a href="catalogo.html">Lançamentos</a>
       <a href="catalogo.html#filtros-catalogo">Categorias <i class="fa-solid fa-chevron-down"></i></a>
       <a href="catalogo.html">Ofertas</a>
+=======
+      <a href="#">Início</a>
+      <a href="#mais-comprados">Livros <i class="fa-solid fa-chevron-down"></i></a>
+      <a href="#mais-comprados">Mais Vendidos</a>
+      <a href="#">Lançamentos</a>
+      <a href="#">Categorias <i class="fa-solid fa-chevron-down"></i></a>
+      <a href="#">Ofertas</a>
+>>>>>>> 817570e6077b2f07533ff7e08d1f2d4b972aca62
     </nav>
 
     <form class="search">
@@ -53,7 +379,11 @@
       </div>
       <h2>Bem-vindo à<br>Mar de Histórias</h2>
       <p>Descubra novos mundos, personagens inesquecíveis e histórias que ficam para sempre.</p>
+<<<<<<< HEAD
       <button class="btn js-scroll-books" type="button">Explorar livros</button>
+=======
+      <button class="btn">Explorar livros</button>
+>>>>>>> 817570e6077b2f07533ff7e08d1f2d4b972aca62
     </div>
   </section>
 
@@ -61,7 +391,11 @@
     <section id="mais-comprados">
       <div class="section-head">
         <h3>Mais Comprados</h3>
+<<<<<<< HEAD
         <a class="see-all" href="catalogo.html">Ver todos <i class="fa-solid fa-arrow-right"></i></a>
+=======
+        <a class="see-all" href="#">Ver todos <i class="fa-solid fa-arrow-right"></i></a>
+>>>>>>> 817570e6077b2f07533ff7e08d1f2d4b972aca62
       </div>
 
       <div class="books">
@@ -138,7 +472,11 @@
         <p>Cadastre-se e seja a primeira pessoa a saber sobre lançamentos e promoções.</p>
         <form class="newsletter">
           <input type="email" placeholder="Seu melhor e-mail">
+<<<<<<< HEAD
           <button type="submit">Cadastrar</button>
+=======
+          <button>Cadastrar</button>
+>>>>>>> 817570e6077b2f07533ff7e08d1f2d4b972aca62
         </form>
       </div>
       <div>
@@ -176,6 +514,9 @@
       <div class="payments"><span>VISA</span><span>mastercard</span><span>elo</span><span>pix</span><span>Boleto</span></div>
     </div>
   </footer>
+<<<<<<< HEAD
   <script src="assets/js/app.js"></script>
+=======
+>>>>>>> 817570e6077b2f07533ff7e08d1f2d4b972aca62
 </body>
 </html>
